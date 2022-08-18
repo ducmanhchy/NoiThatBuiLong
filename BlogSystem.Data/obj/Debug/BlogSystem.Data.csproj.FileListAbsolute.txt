@@ -61,3 +61,11 @@ D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Data\obj\Debug\BlogSystem.Data.cs
 D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Data\obj\Debug\BlogSystem.Data.csproj.CopyComplete
 D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Data\obj\Debug\BlogSystem.Data.dll
 D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Data\obj\Debug\BlogSystem.Data.pdb
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Web\Lib\BlogSystem.Data.dll.config
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Web\Lib\BlogSystem.Data.dll
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Web\Lib\BlogSystem.Data.pdb
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Data\obj\Debug\BlogSystem.Data.csproj.AssemblyReference.cache
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Data\obj\Debug\BlogSystem.Data.csproj.CoreCompileInputs.cache
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Data\obj\Debug\BlogSystem.Data.csproj.CopyComplete
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Data\obj\Debug\BlogSystem.Data.dll
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Data\obj\Debug\BlogSystem.Data.pdb

@@ -25,3 +25,9 @@ D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Common\obj\Debug\BlogSystem.Commo
 D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Common\obj\Debug\BlogSystem.Common.csproj.CoreCompileInputs.cache
 D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Common\obj\Debug\BlogSystem.Common.dll
 D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Common\obj\Debug\BlogSystem.Common.pdb
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Web\Lib\BlogSystem.Common.dll
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Web\Lib\BlogSystem.Common.pdb
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Common\obj\Debug\BlogSystem.Common.csproj.AssemblyReference.cache
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Common\obj\Debug\BlogSystem.Common.csproj.CoreCompileInputs.cache
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Common\obj\Debug\BlogSystem.Common.dll
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Common\obj\Debug\BlogSystem.Common.pdb

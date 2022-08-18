@@ -23,3 +23,9 @@ D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Data.Contracts\obj\Debug\BlogSyst
 D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Data.Contracts\obj\Debug\BlogSystem.Data.Contracts.csproj.CoreCompileInputs.cache
 D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Data.Contracts\obj\Debug\BlogSystem.Data.Contracts.dll
 D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Data.Contracts\obj\Debug\BlogSystem.Data.Contracts.pdb
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Web\Lib\BlogSystem.Data.Contracts.dll
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Web\Lib\BlogSystem.Data.Contracts.pdb
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Data.Contracts\obj\Debug\BlogSystem.Data.Contracts.csproj.AssemblyReference.cache
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Data.Contracts\obj\Debug\BlogSystem.Data.Contracts.csproj.CoreCompileInputs.cache
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Data.Contracts\obj\Debug\BlogSystem.Data.Contracts.dll
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Data.Contracts\obj\Debug\BlogSystem.Data.Contracts.pdb

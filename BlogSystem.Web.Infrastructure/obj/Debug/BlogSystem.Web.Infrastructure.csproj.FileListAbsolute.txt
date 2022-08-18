@@ -103,3 +103,11 @@ D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Web.Infrastructure\obj\Debug\Blog
 D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Web.Infrastructure\obj\Debug\BlogSystem.Web.Infrastructure.csproj.CopyComplete
 D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Web.Infrastructure\obj\Debug\BlogSystem.Web.Infrastructure.dll
 D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Web.Infrastructure\obj\Debug\BlogSystem.Web.Infrastructure.pdb
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Web\Lib\BlogSystem.Web.Infrastructure.dll.config
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Web\Lib\BlogSystem.Web.Infrastructure.dll
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Web\Lib\BlogSystem.Web.Infrastructure.pdb
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Web.Infrastructure\obj\Debug\BlogSystem.Web.Infrastructure.csproj.AssemblyReference.cache
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Web.Infrastructure\obj\Debug\BlogSystem.Web.Infrastructure.csproj.CoreCompileInputs.cache
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Web.Infrastructure\obj\Debug\BlogSystem.Web.Infrastructure.csproj.CopyComplete
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Web.Infrastructure\obj\Debug\BlogSystem.Web.Infrastructure.dll
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Web.Infrastructure\obj\Debug\BlogSystem.Web.Infrastructure.pdb

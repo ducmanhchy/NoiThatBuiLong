@@ -31,3 +31,10 @@ D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Web.Services\obj\Debug\BlogSystem
 D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Web.Services\obj\Debug\BlogSystem.Web.Services.csproj.CopyComplete
 D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Web.Services\obj\Debug\BlogSystem.Web.Services.dll
 D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Web.Services\obj\Debug\BlogSystem.Web.Services.pdb
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Web\Lib\BlogSystem.Web.Services.dll
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Web\Lib\BlogSystem.Web.Services.pdb
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Web.Services\obj\Debug\BlogSystem.Web.Services.csproj.AssemblyReference.cache
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Web.Services\obj\Debug\BlogSystem.Web.Services.csproj.CoreCompileInputs.cache
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Web.Services\obj\Debug\BlogSystem.Web.Services.csproj.CopyComplete
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Web.Services\obj\Debug\BlogSystem.Web.Services.dll
+D:\SOURCE_GIT\ducmanhchy\ducmanhchy\NoiThatBuiLong\BlogSystem.Web.Services\obj\Debug\BlogSystem.Web.Services.pdb
