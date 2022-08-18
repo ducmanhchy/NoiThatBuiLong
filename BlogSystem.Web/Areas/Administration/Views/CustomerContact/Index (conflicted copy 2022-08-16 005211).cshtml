@@ -1,0 +1,49 @@
+﻿@model BlogSystem.Web.Areas.Administration.ViewModels.IndexCustomerContactViewModel
+
+@{
+    ViewBag.Title = "Thông tin liên hệ";
+}
+
+@if (Model.CustomerContact.Any())
+{
+    <table class="table table-inverse">
+        <thead>
+            <tr>
+                <th width="15%">Họ tên</th>
+                <th width="10%">Số điện thoại</th>
+                <th width="10%">Email</th>
+                <th>Nội dung</th>
+                <th width="10%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var custcontact in Model.CustomerContact)
+            {
+                <tr>
+                    <td>@custcontact.Name</td>
+                    <td>@Html.DisplayFor(m => custcontact.Phone)</td>
+                    <td>@Html.DisplayFor(m => custcontact.Email)</td>
+                    <td>@custcontact.Description</td>
+                    <td>
+                        <div class="btn-group">
+                            <a href="@Url.Action("ViewDetail", "CustomerContact", new {area = "Administration", id = custcontact.Id})" class="btn btn-danger">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                Xóa
+                            </a>
+                            <a href="@Url.Action("Delete", "CustomerContact", new {area = "Administration", id = custcontact.Id})" class="btn btn-danger">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                Xóa
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h2>Dữ liệu không có sẵn.</h2>
+}
+
+@Html.Partial("_Pagination")

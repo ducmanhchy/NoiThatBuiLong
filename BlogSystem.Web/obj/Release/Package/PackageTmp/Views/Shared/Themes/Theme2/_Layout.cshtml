@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="index, follow">
+    <meta name="revisit-after" content="1 days">
+    <meta name="author" content="@ViewData["Blog_Author"]">
+    <meta name="keywords" content="@ViewData["Blog_Keywords"]">
+    <meta name="description" content="@ViewData["Blog_Title"] - @ViewData["Blog_Description"]">
+
+    <title>@ViewBag.Title - @ViewData["Blog_Title"]</title>
+
+    <!-- Google Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700%7COpen+Sans:300,300i,400,400i,600,600i,700,800" rel="stylesheet">
+    @*@Styles.Render("~/Publish/Theme1/Css")*@
+
+    <!-- Modernizr -->
+    @Scripts.Render("~/Publish/Theme2/modernizr")
+</head>
+<body>
+    <div id="wrapper">
+        @*@Html.Partial("~/Views/Shared/Themes/Theme1/_Header.cshtml")*@
+        <div class="main">
+            @RenderBody()
+        </div>
+        @*@Html.Partial("~/Views/Shared/Themes/Theme1/_Footer.cshtml")*@
+    </div>
+
+    <a id="scroll-top" href="#top" title="Scroll top"><i class="fa fa-angle-up"></i></a>
+
+    @*@Scripts.Render("~/Publish/Theme1/js")*@
+    @RenderSection("scripts", true)
+</body>
+</html>

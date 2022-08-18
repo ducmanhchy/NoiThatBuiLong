@@ -1,0 +1,266 @@
+﻿@model BlogSystem.Web.ViewModels.Posts.PostViewModel
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<!-- blog area start -->
+<section class="blog__area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 col-lg-8">
+                <div class="postbox__title mb-55">
+                    <h1><a href="blog.html">@Model.Title</a></h1>
+                    <div class="blog__meta">
+                        <span>Bởi <a href="#">@Model.Author</a></span>
+                        <span>/ @Model.CreatedOn</span>
+                    </div>
+                </div>
+                <div class="postbox__thumb w-img">
+                    <img src="@Model.linkIMG" alt="">
+                </div>
+                <div class="postbox__wrapper mb-70">
+                    @Html.Raw(Model.Content)
+                </div>
+                <div class="postbox__share mb-95">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="postbox__social">
+                                <span>Share to friends:</span>
+                                <ul>
+                                    <li><a href="https://facebook.com/sharer/sharer.php?u={@Url}" target="_blank" rel="nofollow noopener noreferrer"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="https://twitter.com/intent/tweet/?text=&amp;url=" target="_blank" rel="nofollow noopener noreferrer"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#" target="_blank" rel="nofollow noopener noreferrer"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="https://pinterest.com/pin/create/button/?url=&amp;media=&amp;description="><i class="fab fa-pinterest-p"></i></a></li>
+                                    <li><a href="#" target="_blank" rel="nofollow noopener noreferrer"><i class="fab fa-youtube"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="postbox__tag f-right">
+                                <span>Tags :</span>
+                                <a href="#">Furniture,</a>
+                                <a href="#">Erentheme,</a>
+                                <a href="#">Chair, </a>
+                                <a href="#">Decor</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="postbox__related-title">
+                    <h3>You Might Also Like</h3>
+                </div>
+                <div class="postbox__related-item">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="blog__item mb-30">
+                                <div class="blog__thumb fix">
+                                    <a href="blog-details.html" class="w-img"><img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/blog-1.jpg" alt="blog"></a>
+                                </div>
+                                <div class="blog__content">
+                                    <h4><a href="blog-details.html">Anteposuerit litterarum formas.</a></h4>
+                                    <div class="blog__meta">
+                                        <span>By <a href="#">Shahnewaz Sakil</a></span>
+                                        <span>/ September 14, 2017</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="blog__item mb-30">
+                                <div class="blog__thumb fix">
+                                    <a href="blog-details.html" class="w-img"><img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/blog-2.jpg" alt="blog"></a>
+                                </div>
+                                <div class="blog__content">
+                                    <h4><a href="blog-details.html">Hanging fruit to identify a ballpark</a></h4>
+                                    <div class="blog__meta">
+                                        <span>By <a href="#">Shahnewaz Sakil</a></span>
+                                        <span>/ September 14, 2017</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="postbox__line mt-65"></div>
+                <div class="postbox__comments pt-90">
+                    <div class="postbox__comment-title mb-30">
+                        <h3>Comments (32)</h3>
+                    </div>
+                    <div class="latest-comments mb-30">
+                        <ul>
+                            <li>
+                                <div class="comments-box">
+                                    <div class="comments-avatar">
+                                        <img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/comments/avater-1.png" alt="">
+                                    </div>
+                                    <div class="comments-text">
+                                        <div class="avatar-name">
+                                            <h5>Siarhei Dzenisenka</h5>
+                                            <span> - 3 months ago </span>
+                                            <a class="reply" href="#">Leave Reply</a>
+                                        </div>
+                                        <p>
+                                            Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for <span>“lorem ipsum”</span> will uncover many web sites still in their infancy. Various
+                                            versions have evolved over the years, sometimes by accident, sometimes on purpose.
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="children">
+                                <div class="comments-box">
+                                    <div class="comments-avatar">
+                                        <img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/comments/avater-2.png" alt="">
+                                    </div>
+                                    <div class="comments-text">
+                                        <div class="avatar-name">
+                                            <h5>Julias Roy</h5>
+                                            <span> - 6 months ago </span>
+                                            <a class="reply" href="#">Leave Reply</a>
+                                        </div>
+                                        <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for <span>“lorem ipsum”</span> will uncover many web sites still in their infancy. </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="comments-box">
+                                    <div class="comments-avatar">
+                                        <img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/comments/avater-3.png" alt="">
+                                    </div>
+                                    <div class="comments-text">
+                                        <div class="avatar-name">
+                                            <h5>Arista Williamson</h5>
+                                            <span> - 6 months ago </span>
+                                            <a class="reply" href="#">Leave Reply</a>
+                                        </div>
+                                        <p>
+                                            Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for <span>“lorem ipsum”</span> will uncover many web sites still in their infancy. Various
+                                            versions have evolved over the years, sometimes by accident, sometimes on purpose.
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="postbox__line mb-95"></div>
+                <div class="post-comments-form mb-100">
+                    <div class="post-comments-title mb-30">
+                        <h3>Leave A Reply</h3>
+                    </div>
+                    <form id="contacts-form" class="conatct-post-form" action="#">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-6">
+                                <div class="contact-icon p-relative contacts-name">
+                                    <input type="text" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6">
+                                <div class="contact-icon p-relative contacts-name">
+                                    <input type="email" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <div class="contact-icon p-relative contacts-email">
+                                    <input type="text" placeholder="Subject">
+                                </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <div class="contact-icon p-relative contacts-message">
+                                    <textarea name="comments" id="comments" cols="30" rows="10" placeholder="Comments"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <button class="os-btn os-btn-black" type="submit">Post comment</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4">
+                <div class="sidebar__wrapper">
+                    <div class="sidebar__widget mb-55">
+                        <div class="sidebar__widget-title mb-25">
+                            <h3>Bài viết tương tự</h3>
+                        </div>
+                        <div class="sidebar__widget-content">
+                            <div class="rc__post-wrapper">
+                                <ul>
+                                    <li class="d-flex">
+                                        <div class="rc__post-thumb mr-20 ">
+                                            <a href="blog-details.html"><img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/sm/blog-sm-1.jpg" alt="blog-1"></a>
+                                        </div>
+                                        <div class="rc__post-content">
+                                            <h6>
+                                                <a href="blog-details.html">Make your life easy</a>
+                                            </h6>
+                                            <div class="rc__meta">
+                                                <span> September 14, 2020</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex">
+                                        <div class="rc__post-thumb mr-20 ">
+                                            <a href="blog-details.html"><img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/sm/blog-sm-2.jpg" alt="blog-1"></a>
+                                        </div>
+                                        <div class="rc__post-content">
+                                            <h6>
+                                                <a href="blog-details.html">Feel like home</a>
+                                            </h6>
+                                            <div class="rc__meta">
+                                                <span>October 01, 2020</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex">
+                                        <div class="rc__post-thumb mr-20 ">
+                                            <a href="blog-details.html"><img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/sm/blog-sm-3.jpg" alt="blog-1"></a>
+                                        </div>
+                                        <div class="rc__post-content">
+                                            <h6>
+                                                <a href="blog-details.html">Best thing ever</a>
+                                            </h6>
+                                            <div class="rc__meta">
+                                                <span>October 05, 2020</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sidebar__widget mb-55">
+                        <div class="sidebar__widget-title mb-25">
+                            <h3>Archives</h3>
+                        </div>
+                        <div class="sidebar__widget-content">
+                            <div class="sidebar__links">
+                                <ul>
+                                    <li><a href="#">December 2013</a></li>
+                                    <li><a href="#"> November 2013</a></li>
+                                    <li><a href="#"> September 2013</a></li>
+                                    <li><a href="#">November 2012</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sidebar__widget mb-55">
+                        <div class="sidebar__widget-title mb-25">
+                            <h3>Meta</h3>
+                        </div>
+                        <div class="sidebar__widget-content">
+                            <div class="sidebar__links">
+                                <ul>
+                                    <li><a href="#">Log in</a></li>
+                                    <li><a href="#"> Entries RSS</a></li>
+                                    <li><a href="#"> Comments RSS</a></li>
+                                    <li><a href="#">WordPress.org</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- blog area end -->

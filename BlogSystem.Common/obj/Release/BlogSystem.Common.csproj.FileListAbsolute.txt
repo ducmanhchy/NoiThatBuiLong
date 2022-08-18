@@ -1,0 +1,12 @@
+D:\NEXTCLOUD\WEBSITE\src\BlogSystem.Common\bin\Release\BlogSystem.Common.dll
+D:\NEXTCLOUD\WEBSITE\src\BlogSystem.Common\bin\Release\BlogSystem.Common.pdb
+D:\NEXTCLOUD\WEBSITE\src\BlogSystem.Common\obj\Release\BlogSystem.Common.csproj.AssemblyReference.cache
+D:\NEXTCLOUD\WEBSITE\src\BlogSystem.Common\obj\Release\BlogSystem.Common.csproj.CoreCompileInputs.cache
+D:\NEXTCLOUD\WEBSITE\src\BlogSystem.Common\obj\Release\BlogSystem.Common.dll
+D:\NEXTCLOUD\WEBSITE\src\BlogSystem.Common\obj\Release\BlogSystem.Common.pdb
+D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Common\bin\Release\BlogSystem.Common.dll
+D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Common\bin\Release\BlogSystem.Common.pdb
+D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Common\obj\Release\BlogSystem.Common.csproj.AssemblyReference.cache
+D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Common\obj\Release\BlogSystem.Common.csproj.CoreCompileInputs.cache
+D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Common\obj\Release\BlogSystem.Common.dll
+D:\SOURCE_GIT\BlogSystem-master\MSI\BlogSystem.Common\obj\Release\BlogSystem.Common.pdb

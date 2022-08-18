@@ -1,0 +1,66 @@
+﻿@model BlogSystem.Web.ViewModels.Account.LoginViewModel
+
+@{
+    ViewBag.Title = "Đăng nhập";
+}
+
+<!-- page title area start -->
+<section class="page__title p-relative d-flex align-items-center" data-background="assets/img/page-title/page-title-1.jpg" style="background-image: url(&quot;assets/img/page-title/page-title-1.jpg&quot;);">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page__title-inner text-center">
+                    <h1>Login</h1>
+                    <div class="page__title-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page"> Login</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- page title area end -->
+<!-- login Area Strat-->
+<section class="login-area pt-50 pb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="basic-login">
+                    <h3 class="text-center mb-60">Đăng nhập hệ thống</h3>
+                    @using (Html.BeginForm("Login", "Account", new { ViewBag.ReturnUrl }, FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, string.Empty, new { @class = "text-danger" })
+
+                        @Html.LabelFor(m => m.UserName, new { @class = "mt-10" })
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "mb-0", placeholder = "Nhập tài khoản hoặc địa chỉ email..." })
+                        <div>@Html.ValidationMessageFor(m => m.UserName, string.Empty, new { @class = "text-danger" })</div>
+
+                        @Html.LabelFor(m => m.Password, new { @class = "mt-10" })
+                        @Html.PasswordFor(m => m.Password, new { @class = "mb-0", placeholder = "Nhập mật khẩu..." })
+                        <div>@Html.ValidationMessageFor(m => m.Password, string.Empty, new { @class = "text-danger" })</div>
+
+                        <div class="login-action mb-20 mt-10 fix">
+                            <span class="log-rem f-left">
+                                @Html.CheckBoxFor(m => m.RememberMe, new { @id = "remember" })
+                                @Html.LabelFor(m => m.RememberMe)
+                            </span>
+                            <span class="forgot-login f-right">
+                                @Html.ActionLink("Quên mật khẩu?", "ForgotPassword")
+                            </span>
+                        </div>
+                        <button class="os-btn w-100">Đăng Nhập</button>
+                        <div class="or-divide"><span>or</span></div>
+                        @Html.ActionLink("Đăng ký", "Register", "Account", new { area = string.Empty }, new { @class = "os-btn os-btn-black w-100", id = "loginLink" })
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- login Area End-->

@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Xóa thông tin liên hệ";
+}
+
+<h3 class="text-danger">Bạn có chắc chắn muốn xóa không?</h3>
+
+@using (Html.BeginForm("Delete", "CustomerContact", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <button type="submit" class="btn btn-danger">Xóa</button>
+
+    @Html.ActionLink("Cancel", "Index", "CustomerContact", new { area = "Administration" }, new { @class = "btn btn-default" })
+}

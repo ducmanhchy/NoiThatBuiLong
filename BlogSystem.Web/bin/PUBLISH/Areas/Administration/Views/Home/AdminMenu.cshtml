@@ -1,0 +1,22 @@
+﻿@model BlogSystem.Web.Areas.Administration.ViewModels.Administration.MenuAdminViewModel
+@using WebHelpers.Mvc5
+
+@foreach (var item in Model.Menus)
+{
+    <li class="@Url.IsLinkActive("Index", item.ControlerName)">
+        <a href="@Url.Action("Index", item.ControlerName, new { area = "Administration" })"><i class="fa fa-link"></i><span>@item.Name</span></a>
+    </li>
+}
+
+@*<li class="treeview">
+        <a href="#">
+            <i class="fa fa-link"></i> <span>Multilevel</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="#">Link in level 2</a></li>
+            <li><a href="#">Link in level 2</a></li>
+        </ul>
+    </li>*@

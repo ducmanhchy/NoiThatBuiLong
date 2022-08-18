@@ -1,0 +1,334 @@
+﻿@using BlogSystem.Common
+
+<!-- header area start -->
+<header>
+    <div id="header-sticky" class="header__area @*header__transparent*@ sticky">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4">
+                    <div class="logo">
+                        <a href="/"><img src="@ViewData["Logo"]" alt="logo"></a>
+                    </div>
+                </div>
+                <div class="col-xl-9 col-lg-9 col-md-8 col-sm-8">
+                    <div class="header__right p-relative d-flex justify-content-between justify-content-sm-end align-items-center">
+                        <div class="mobile-menu-btn d-none o-xs-block">
+                            <a href="javascript:void(0);" class="mobile-menu-toggle"><i class="fas fa-bars"></i></a>
+                        </div>
+                        <div class="main-menu d-none d-lg-block">
+                            <nav>
+                                <ul>
+                                    @*<li class="mega-menu has-dropdown">
+                                            @Html.ActionLink("Sản Phẩm", "Index", "Product")
+                                            <ul class="submenu transition-3" data-background="/Content/Publish/Theme3/img/bg/mega-menu-bg.jpg" style="background-image: url(&quot;/Content/Publish/Theme3/img/bg/mega-menu-bg.jpg&quot;);">
+                                                <li class="has-dropdown">
+                                                    <a href="#">Shop Pages</a>
+                                                    <ul>
+                                                        <li><a href="#">Standard Shop Page</a></li>
+                                                        <li><a href="#">Shop Right Sidebar</a></li>
+                                                        <li><a href="#">Shop 4 Column</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="has-dropdown">
+                                                    <a href="#">Products Pages</a>
+                                                    <ul>
+                                                        <li><a href="#">Product Details</a></li>
+                                                        <li><a href="#">Product Page V2</a></li>
+                                                        <li><a href="#">Product Page V3</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="has-dropdown">
+                                                    <a href="#">Other Shop Pages</a>
+                                                    <ul>
+                                                        <li><a href="#">Wishlist</a></li>
+                                                        <li><a href="#">Shopping Cart</a></li>
+                                                        <li><a href="#">Checkout</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>*@
+                                    <li class="has-dropdown">
+                                        <a href="#">Phòng</a>
+                                        <ul class="submenu transition-3">
+                                            <li><a href="#">Phòng khách</a></li>
+                                            <li><a href="#">Phòng ăn</a></li>
+                                            <li><a href="#">Phòng ngủ</a></li>
+                                            <li><a href="#">Phòng làm việc</a></li>
+                                            <li><a href="#">Tủ bếp</a></li>
+                                            <li><a href="#">Hàng trang trí</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Bộ sưu tập", "Index", "Collection")
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Thiết kế", "Index", "ThietKeNoiThat")
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Ý tưởng", "Index", "Idea")
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="header__action">
+                            <ul>
+                                <li><a href="#" class="search-toggle"><i class="fas fa-search"></i></a></li>
+                                <li>
+                                    <a href="javascript:void(0);"><i class="fas fa-user"></i></a>
+                                    <ul class="extra-info">
+                                        <li>
+                                            <div class="my-account">
+                                                <ul>
+                                                    @*<li><a href="#" class="dropdown-item">My Account</a></li>
+                                                        <li><a href="#" class="dropdown-item">Wishlist</a></li>*@
+                                                    @if (Request.IsAuthenticated)
+                                                    {
+                                                        if (User.IsInRole(GlobalConstants.AdministratorRoleName))
+                                                        {
+                                                            <li>
+                                                                @Html.ActionLink("Quản trị", "Index", "Home", new { area = "Administration" }, new { @class = "dropdown-item" })
+                                                            </li>
+                                                        }
+
+                                                        using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                                                        {
+                                                            @Html.AntiForgeryToken()
+
+                                                            <li>
+                                                                <a href="javascript:document.getElementById('logoutForm').submit()" class="dropdown-item">Đăng xuất</a>
+                                                            </li>
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        <li>
+                                                            @Html.ActionLink("Đăng nhập", "Login", "Account", new { area = string.Empty }, new { @class = "dropdown-item", id = "loginLink" })
+                                                        </li>
+                                                    }
+                                                    @*<li>
+                                                        @Html.ActionLink("Đăng ký", "Register", "Account", new { area = string.Empty }, new { @class = "dropdown-item", id = "registerLink" })
+                                                    </li>*@
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        @*<li>
+                                                <div class="lang">
+                                                    <div class="extra-title">
+                                                        <h5>Ngôn ngữ</h5>
+                                                    </div>
+                                                    <ul>
+                                                        <li><a href="#" class="dropdown-item">Tiếng Việt</a></li>
+                                                        <li><a href="#" class="dropdown-item">Tiếng Anh</a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="currency">
+                                                    <div class="extra-title">
+                                                        <h5>Tiền Tệ</h5>
+                                                    </div>
+                                                    <ul>
+                                                        <li><a href="#" class="dropdown-item">VND - VN Dong</a></li>
+                                                        <li><a href="#" class="dropdown-item">USD - US Dollar</a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>*@
+                                    </ul>
+                                </li>
+                                @*<li>
+                                        <a href="javascript:void(0);" class="cart"><i class="fas fa-cart-plus"></i><span class="cart-number-2">03</span></a>
+                                        <div class="mini-cart">
+                                            <div class="mini-cart-inner">
+                                                <ul class="mini-cart-list">
+                                                    <li>
+                                                        <div class="cart-img f-left">
+                                                            <a href="#">
+                                                                <img src="/Content/Publish/Theme3/img/shop/product/cart-sm/16.jpg" alt="">
+                                                            </a>
+                                                        </div>
+                                                        <div class="cart-content f-left text-left">
+                                                            <h5>
+                                                                <a href="#">Consectetur adi </a>
+                                                            </h5>
+                                                            <div class="cart-price">
+                                                                <span class="ammount">1 <i class="fal fa-times"></i></span>
+                                                                <span class="price">$ 400</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="del-icon f-right mt-30">
+                                                            <a href="#">
+                                                                <i class="fal fa-times"></i>
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="cart-img f-left">
+                                                            <a href="#">
+                                                                <img src="/Content/Publish/Theme3/img/shop/product/cart-sm/17.jpg" alt="">
+                                                            </a>
+                                                        </div>
+                                                        <div class="cart-content f-left text-left">
+                                                            <h5>
+                                                                <a href="#">Wooden container Bowl </a>
+                                                            </h5>
+                                                            <div class="cart-price">
+                                                                <span class="ammount">1 <i class="fal fa-times"></i></span>
+                                                                <span class="price">$ 400</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="del-icon f-right mt-30">
+                                                            <a href="#">
+                                                                <i class="fal fa-times"></i>
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="cart-img f-left">
+                                                            <a href="#">
+                                                                <img src="/Content/Publish/Theme3/img/shop/product/cart-sm/18.jpg" alt="">
+                                                            </a>
+                                                        </div>
+                                                        <div class="cart-content f-left text-left">
+                                                            <h5>
+                                                                <a href="#">Black White Towel </a>
+                                                            </h5>
+                                                            <div class="cart-price">
+                                                                <span class="ammount">1 <i class="fal fa-times"></i></span>
+                                                                <span class="price">$ 400</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="del-icon f-right mt-30">
+                                                            <a href="#">
+                                                                <i class="fal fa-times"></i>
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <div class="total-price d-flex justify-content-between mb-30">
+                                                    <span>Subtotal:</span>
+                                                    <span>$400.0</span>
+                                                </div>
+                                                <div class="checkout-link">
+                                                    <a href="#" class="os-btn">view Cart</a>
+                                                    <a class="os-btn os-btn-black" href="#">Checkout</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>*@
+                                <li>
+                                    <div class="mobile-menu-btn d-none o-md-block o-sm-block">
+                                        <a href="javascript:void(0);" class="mobile-menu-toggle"><i class="fas fa-bars"></i></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header area end -->
+<!-- scroll up area start -->
+<div class="scroll-up" id="scroll" style="display: none;">
+    <a href="javascript:void(0);" class="scroll-link"><i class="fas fa-level-up-alt"></i></a>
+</div>
+<!-- scroll up area end -->
+<!-- search area start -->
+<section class="header__search white-bg transition-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="header__search-inner text-center">
+                    <form action="#">
+                        <div class="header__search-btn">
+                            <a href="javascript:void(0);" class="header__search-btn-close"><i class="fal fa-times"></i></a>
+                        </div>
+                        <div class="header__search-header">
+                            <h3>Search</h3>
+                        </div>
+                        <div class="header__search-categories">
+                            <ul class="search-category">
+                                <li><a href="#">All Categories</a></li>
+                                <li><a href="#">Accessories</a></li>
+                                <li><a href="#">Chair</a></li>
+                                <li><a href="#">Tablet</a></li>
+                                <li><a href="#">Men</a></li>
+                                <li><a href="#">Women</a></li>
+                            </ul>
+                        </div>
+                        <div class="header__search-input p-relative">
+                            <input type="text" placeholder="Search for products... ">
+                            <button type="submit"><i class="far fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="body-overlay transition-3"></div>
+<!-- search area end -->
+<!-- extra info area start -->
+<section class="extra__info transition-3">
+    <div class="extra__info-inner">
+        <div class="extra__info-close text-right">
+            <a href="javascript:void(0);" class="extra__info-close-btn"><i class="fal fa-times"></i></a>
+        </div>
+        <!-- side-mobile-menu start -->
+        <nav class="side-mobile-menu d-block d-lg-none">
+            <ul id="mobile-menu-active">
+                <li class="mega-menu has-dropdown">
+                    @Html.ActionLink("Sản Phẩm", "Index", "Product")
+                    <ul class="submenu transition-3" data-background="/Content/Publish/Theme3/img/bg/mega-menu-bg.jpg">
+                        <li class="has-dropdown">
+                            <a href="#">Shop Pages</a>
+                            <ul>
+                                <li><a href="#">Standard Shop Page</a></li>
+                                <li><a href="#">Shop Right Sidebar</a></li>
+                                <li><a href="#">Shop 4 Column</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-dropdown">
+                            <a href="#">Products Pages</a>
+                            <ul>
+                                <li><a href="#">Product Details</a></li>
+                                <li><a href="#">Product Page V2</a></li>
+                                <li><a href="#">Product Page V3</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-dropdown">
+                            <a href="#">Other Shop Pages</a>
+                            <ul>
+                                <li><a href="#">Wishlist</a></li>
+                                <li><a href="#">Shopping Cart</a></li>
+                                <li><a href="#">Checkout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="#">Phòng</a>
+                    <ul class="submenu transition-3">
+                        <li><a href="#">Phòng khách</a></li>
+                        <li><a href="#">Phòng ăn</a></li>
+                        <li><a href="#">Phòng ngủ</a></li>
+                        <li><a href="#">Phòng làm việc</a></li>
+                        <li><a href="#">Nhà vệ sinh</a></li>
+                        <li><a href="#">Tủ bếp</a></li>
+                        <li><a href="#">Hàng trang trí</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Bộ sưu tập</a></li>
+                <li>
+                    @Html.ActionLink("Thiết kế", "Index", "Blog")
+                </li>
+                <li><a href="#">Showroom</a></li>
+                <li><a href="#">Ý tưởng</a></li>
+            </ul>
+        </nav>
+        <!-- side-mobile-menu end -->
+    </div>
+</section>
+<div class="body-overlay transition-3"></div>
+<!-- extra info area end -->

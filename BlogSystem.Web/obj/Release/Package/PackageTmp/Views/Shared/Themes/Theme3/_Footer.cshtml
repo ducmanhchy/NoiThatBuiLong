@@ -1,0 +1,138 @@
+﻿<!-- footer area start -->
+<section class="footer__area dark-soft-bg">
+    <div class="footer__top pt-100 pb-50">
+        <div class="container custom-container-2">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="footer__social-list mb-60">
+                        <ul>
+                            <li>
+                                <a target="_blank" href="@ViewData["Facebook"]">Facebook</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="@ViewData["Twitter"]">Twitter</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="@ViewData["Instagram"]">Instagram</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="@ViewData["Pinterest"]">Pinterest</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="@ViewData["Youtube"]">Youtube</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+                    <div class="footer__widget mb-30">
+                        <div class="footer__widget-title mb-25">
+                            <a href="/"><img src="@ViewData["Logo"]" alt="logo"></a>
+                        </div>
+                        <div class="footer__widget-content">
+                            <div class="footer__contact">
+                                <ul>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fal fa-map-marker-alt"></i>
+                                        </div>
+                                        <div class="text">
+                                            <span>Address: @ViewData["Addr"]</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fal fa-envelope-open-text"></i>
+                                        </div>
+                                        <div class="text">
+                                            <span>Email: <a href="mailto:@ViewData["Email"]">@ViewData["Email"]</a></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fal fa-phone-alt"></i>
+                                        </div>
+                                        <div class="text">
+                                            <span>Phone: <a href="tel:@ViewData["PhoneNumber"]">@ViewData["PhoneNumber"]</a></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p id="DescContact2">@Html.Raw(ViewData["DescContact2"])</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-md-3 col-12">
+                    <div class="footer__widget mb-30">
+                        <div class="footer__widget-title">
+                            <h5>Thông tin</h5>
+                        </div>
+                        <div class="footer__widget-content">
+                            <div class="footer__links">
+                                <ul>
+                                    <li><a href="#">Giới thiệu doanh nghiệp</a></li>
+                                    <li><a href="#">Hợp tác</a></li>
+                                    <li><a href="#">Dự án</a></li>
+                                    <li><a href="#">Hệ thống cửa hàng</a></li>
+                                    <li><a href="#">Tin tức</a></li>
+                                    <li><a href="#">Tuyển dụng</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-md-3 col-12">
+                    <div class="footer__widget mb-30">
+                        <div class="footer__widget-title mb-25">
+                            <h5>Dịch vụ khách hàng</h5>
+                        </div>
+                        <div class="footer__widget-content">
+                            <div class="footer__links">
+                                <ul>
+                                    <li><a href="#">Hướng dẫn mua hàng, thanh toán</a></li>
+                                    <li><a href="#">Quy định vận chuyển</a></li>
+                                    <li><a href="#">Bảo hành/Bảo trì</a></li>
+                                    <li><a href="#">Chính sách bảo hành</a></li>
+                                    <li><a href="#">Chính sách bảo mật</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-3 col-md-6 col-12">
+                    <div class="footer__widget mb-30">
+                        <div class="footer__widget-title mb-25">
+                            <h5>newsletter</h5>
+                        </div>
+                        <div class="footer__widget-content">
+                            <p>Hãy để lại email của bạn để nhận được những ý tưởng trang trí mới và những thông tin, ưu đãi từ chúng tôi</p>
+                            <div class="form-group">
+                                <input class="form-control" id="newsletter-input" type="email" name="contact[email]" placeholder="Nhập email của bạn...">
+                                <button class="ss-btn btnNewsletter" type="submit">Đăng ký</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer__bottom footer__bottom-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-7 col-md-8">
+                    <div class="footer__copyright footer__copyright-3">
+                        <p>Copyright © <a href="/" class="link">@ViewData["LogoTitle"]</a> all rights reserved. Powered by <a href="/" class="link">@ViewData["CoppyRight"]</a></p>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-5 col-md-4">
+                    <div class="footer__payment">
+                        <a href="#"><img src="@ViewData["Logo"]" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- footer area end -->

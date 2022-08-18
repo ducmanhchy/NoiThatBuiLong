@@ -1,0 +1,29 @@
+﻿@model BlogSystem.Web.ViewModels.PaginationViewModel
+
+@if (Model.PagesCount > 1)
+{
+    <div class="shop-pagination-wrapper">
+        <div class="basic-pagination">
+            <ul>
+                <li><a href="@Url.Action("Index", new {area = string.Empty, page = Model.PreviousPage})"><i class="fal fa-angle-left"></i></a></li>
+                @for (int i = 1; i <= Model.PagesCount; i++)
+                {
+                    if (i == Model.CurrentPage)
+                    {
+                        <li class="active">
+                            @Html.ActionLink($"{i}", "Index", new { area = string.Empty, page = i }, new { })
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            @Html.ActionLink($"{i}", "Index", new { area = string.Empty, page = i }, new { })
+                        </li>
+                    }
+                }
+                <li><a href="#"><i class="fas fa-ellipsis-h"></i></a></li>
+                <li><a href="@Url.Action("Index", new { area = string.Empty, page = Model.NextPage })"><i class="fal fa-angle-right"></i></a></li>
+            </ul>
+        </div>
+    </div>
+}

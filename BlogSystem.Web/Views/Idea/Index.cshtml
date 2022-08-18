@@ -1,0 +1,61 @@
+﻿@model BlogSystem.Web.ViewModels.Posts.IndexPostsViewModel
+
+@{
+    ViewBag.Title = "Ý tưởng";
+}
+
+<!-- page title area start -->
+<section class="page__title p-relative d-flex align-items-center" data-background="https://themepure.net/template/outstock-prv/outstock/assets/img/page-title/page-title-1.jpg" style="background-image: url(&quot;https://themepure.net/template/outstock-prv/outstock/assets/img/page-title/page-title-1.jpg&quot;);">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page__title-inner text-center">
+                    <h1>@ViewBag.Title</h1>
+                    <div class="page__title-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- page title area end -->
+<!-- blog area start -->
+<section class="blog__area pt-100 pb-100">
+    <div class="container-fluid">
+        <div class="row grid">
+            @foreach (var post in Model.Posts)
+            {
+                <div class="col-xl-4 col-lg-4 col-md-6 grid-item">
+                    <div class="blog__wrapper">
+                        <div class="blog__item mb-60">
+                            <div class="blog__thumb fix">
+                                <a href="@Url.Action("IdeaDetail", new { id = post.Id })" class="w-img"><img src="@post.linkIMG" alt="@post.TitleIMG"></a>
+                            </div>
+                            <div class="blog__content">
+                                <h4><a href="@Url.Action("IdeaDetail", new { id = post.Id })">@post.Title</a></h4>
+                                <div class="blog__meta">
+                                    <span>Bởi <a href="#">@post.Author</a></span>
+                                    <span>/ @post.CreatedOn</span>
+                                </div>
+                                <p>@post.ShortContent</p>
+                                <a href="@Url.Action("IdeaDetail", new { id = post.Id })" class="os-btn">Xem thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="row">
+            <div class="col-xl-12">
+                @Html.Partial("_Pagination")
+            </div>
+        </div>
+    </div>
+</section>
+<!-- blog area end -->

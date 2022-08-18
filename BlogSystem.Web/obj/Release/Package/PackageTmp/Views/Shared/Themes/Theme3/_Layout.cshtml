@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <!--[if IE]> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="index, follow">
+    <meta name="revisit-after" content="1 days">
+    <meta name="author" content="@ViewData["Author"]">
+    <meta name="keywords" content="@ViewData["Keywords"]">
+    <meta name="description" content="@ViewData["Title"] - @ViewData["Description"]">
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/Publish/Theme3/img/favicon.png">
+
+    <title>@ViewBag.Title</title>
+
+    <!-- Google Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700%7COpen+Sans:300,300i,400,400i,600,600i,700,800" rel="stylesheet">
+
+    <!-- CSS here -->
+    @Styles.Render("~/Publish/Theme3/Css")
+</head>
+<body>
+    <!--[if lte IE 9]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
+    <!-- Add your site or application content here -->
+    <!-- prealoder area start (loading) -->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="first_object"></div>
+                <div class="object" id="second_object"></div>
+                <div class="object" id="third_object"></div>
+            </div>
+        </div>
+    </div>
+    <!-- prealoder area end (loading) -->
+
+    @Html.Partial("~/Views/Shared/Themes/Theme3/_Header.cshtml")
+
+    <main>
+        @RenderBody()
+    </main>
+
+    @Html.Partial("~/Views/Shared/Themes/Theme3/_Footer.cshtml")
+
+    <!-- JS here -->
+    @Scripts.Render("~/Publish/Theme3/js")
+</body>
+</html>

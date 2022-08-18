@@ -1,0 +1,36 @@
+﻿@model BlogSystem.Web.ViewModels.Home.IndexPageViewModel
+
+@{
+    ViewBag.Title = "Home";
+}
+
+@if (Model.Posts.Any())
+{
+    foreach (var post in Model.Posts)
+    {
+        <article class="entry">
+            <header class="e-header">
+                <h2 class="e-title">
+                    @Html.RouteLink(post.Title, "Posts", new { slug = post.Slug, id = post.Id })
+                </h2>
+
+                <time datetime="@post.CreatedOn" class="e-date">@Html.Timeago(post.CreatedOn)</time>
+
+                <strong class="e-author">@post.Author</strong>
+            </header>
+
+            <div class="e-content">
+                @Html.Truncate(post.Content)
+            </div>
+        </article>
+    }
+}
+else
+{
+    <article class="entry center">
+        <h2>Error</h2>
+        <h3>Sorry, nothing here...</h3>
+    </article>
+}
+
+@Html.Partial("_Pagination")
