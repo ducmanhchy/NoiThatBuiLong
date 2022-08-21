@@ -1,49 +1,24 @@
-﻿@model BlogSystem.Web.ViewModels.Home.CustomerContactViewModel
+﻿@model BlogSystem.Web.ViewModels.Home.IndexHomeViewModel
 
 @{
     ViewBag.Title = "OutStock";
 }
 
-<!-- slider area start -->
-<section class="slider__area slider__area-3 p-relative">
-    <div class="slider-active-3">
-        <div class="single-slider single-slider-2 slider__height-6 d-flex align-items-center" data-background="https://nhaxinh.com/wp-content/uploads/2022/07/phong-khach-tram-am-osaka-BANNER.jpg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="page__title-inner text-center">
-                            <h1 data-animation="fadeInUp" data-delay=".2s">BỘ SƯU TẬP OSAKA</h1>
-                            <div class="page__title-breadcrumb">
-                                <nav aria-label="breadcrumb">
-                                    <div class="breadcrumb justify-content-center">
-                                        <a href="shop.html" class="os-btn-4 btn bg-light opacity-65" data-animation="fadeInUp" data-delay=".6s">KHÁM PHÁ NGAY</a>
-                                    </div>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
+@if (Model.Posts.Where(x => x.type == "SL_HOME").Count() > 0)
+{
+    <!-- slider area start -->
+    <section class="slider__area slider__area-3 p-relative">
+        <div class="slider-active-3">
+            @foreach (var item in Model.Posts.Where(x => x.type == "SL_HOME").OrderBy(x => x.Ord))
+            {
+                <div class="single-slider single-slider-2 slider__height-6 d-flex align-items-center" data-background="@item.linkIMG">
+                    @Html.Raw(item.Content);
                 </div>
-            </div>
+            }
         </div>
-        <div class="single-slider single-slider-2 slider__height-6 d-flex align-items-center" data-background="https://nhaxinh.com/wp-content/uploads/2022/04/giuong-iris-dep-gia-tot-hoc-keo.jpg">
-            <div class="container custom-container-2">
-                <div class="row">
-                    <div class="col-xl-7 col-lg-7 col-md-10">
-                        <div class="slider__content slider__content-5">
-                            <span>Quick parcel delivery</span>
-                            <h2 data-animation="fadeInUp" data-delay=".2s">Creative theme <br>Awesome.</h2>
-                            <p data-animation="fadeInUp" data-delay=".4s">
-                                Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.
-                            </p>
-                            <a href="shop.html" class="os-btn-4 btn bg-light opacity-65" data-animation="fadeInUp" data-delay=".6s">KHÁM PHÁ NGAY</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- slider area end -->
+    </section>
+    <!-- slider area end -->
+}
 <!-- banner__area-df start -->
 <div class="banner__area-df mt-10">
     <div class="banner__item-3 mb-30">
@@ -1731,15 +1706,15 @@
                             <div class="col-xl-6 col-lg-6">
                                 <div class="contact__input">
                                     <label>Họ tên <span class="required">*</span></label>
-                                    @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(m => m.Name, string.Empty, new { @class = "text-danger" })
+                                    @Html.EditorFor(m => m.CustomerContactViewModel.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.CustomerContactViewModel.Name, string.Empty, new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6">
                                 <div class="contact__input">
                                     <label>Số điện thoại <span class="required">*</span></label>
-                                    @Html.EditorFor(m => m.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(m => m.Phone, string.Empty, new { @class = "text-danger" })
+                                    @Html.EditorFor(m => m.CustomerContactViewModel.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.CustomerContactViewModel.Phone, string.Empty, new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -1747,8 +1722,8 @@
                             <div class="col-xl-12">
                                 <div class="contact__input">
                                     <label>Email <span class="required">*</span></label>
-                                    @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(m => m.Email, string.Empty, new { @class = "text-danger" })
+                                    @Html.EditorFor(m => m.CustomerContactViewModel.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.CustomerContactViewModel.Email, string.Empty, new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>

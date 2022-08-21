@@ -63,7 +63,8 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                 {
                     if (model.ImgPost != null && model.ImgPost.ContentLength > 0)
                     {
-                        Utility.removeFile(Path.Combine(Server.MapPath("~/UploadedFiles/"), model.linkIMG.Replace("/UploadedFiles/", "")));
+                        if (!string.IsNullOrEmpty(model.linkIMG))
+                            Utility.removeFile(Path.Combine(Server.MapPath("~/UploadedFiles/"), model.linkIMG.Replace("/UploadedFiles/", "")));
                         ImageUpload imageUpload = new ImageUpload { Height = 210 };
                         ImageResult imageResult = imageUpload.RenameUploadFile(model.ImgPost);
                         if (imageResult.Success)
@@ -130,7 +131,8 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                 {
                     if (model.ImgPost != null && model.ImgPost.ContentLength > 0)
                     {
-                        Utility.removeFile(Path.Combine(Server.MapPath("~/UploadedFiles/"), model.linkIMG.Replace("/UploadedFiles/", "")));
+                        if (!string.IsNullOrEmpty(model.linkIMG))
+                            Utility.removeFile(Path.Combine(Server.MapPath("~/UploadedFiles/"), model.linkIMG.Replace("/UploadedFiles/", "")));
                         ImageUpload imageUpload = new ImageUpload { };
                         ImageResult imageResult = imageUpload.RenameUploadFile(model.ImgPost);
                         if (imageResult.Success)

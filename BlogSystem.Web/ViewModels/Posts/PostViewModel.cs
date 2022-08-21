@@ -22,9 +22,17 @@ namespace BlogSystem.Web.ViewModels.Posts
 
         public string type { get; set; }
 
+        public string ParentType { get; set; }
+
         public string linkIMG { get; set; }
 
         public string TitleIMG { get; set; }
+
+        public string Desc { get; set; }
+
+        public string LinkPost { get; set; }
+
+        public int Ord { get; set; }
 
         public void CreateMappings(IMapperConfigurationExpression config)
         {

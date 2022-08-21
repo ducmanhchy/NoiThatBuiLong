@@ -4,7 +4,13 @@
     ViewBag.Title = "Trang chủ";
 }
 
-<hr />
+<header>
+    <a href="@Url.Action("Create", "Home", new {area = "Administration"})" class="btn btn-success float-right">
+        <span class="fa fa-plus" aria-hidden="true"></span>
+        Tạo mới
+    </a>
+</header>
+<br />
 
 @if (Model.Posts.Any())
 {

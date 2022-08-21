@@ -2,9 +2,7 @@
 {
     using System.Web.Mvc;
     using System.ComponentModel.DataAnnotations;
-   
     using AutoMapper;
-
     using BlogSystem.Data.Models;
     using BlogSystem.Web.Infrastructure.Mapping;
     using BlogSystem.Web.Areas.Administration.ViewModels.Administration;
@@ -25,7 +23,6 @@
         [Display(Name = "Nội dung chi tiết")]
         public string Content { get; set; }
 
-        [Required]
         [Display(Name = "Nội dung tóm tắt")]
         public string ShortContent { get; set; }
 
@@ -40,6 +37,7 @@
         public bool isPublish { get; set; }
 
         public string type { get; set; }
+        public string ParentType { get; set; }
 
         public string linkIMG { get; set; }
 
@@ -51,10 +49,18 @@
         [Display(Name = "Trạng thái")]
         public int status { get; set; }
 
-        [Required]
         [Display(Name = "Tải ảnh lên")]
         [AllowFileSize(FileSize = 3 * 1024 * 1024, ErrorMessage = "Maximum allowed file size is 3 MB")]
         public HttpPostedFileBase ImgPost { get; set; }
+
+        [Display(Name = "Mô tả")]
+        public string Desc { get; set; }
+
+        [Display(Name = "Link bài viết")]
+        public string LinkPost { get; set; }
+
+        [Display(Name = "Thứ tự sắp xếp")]
+        public int Ord { get; set; }
 
         public void CreateMappings(IMapperConfigurationExpression config)
         {

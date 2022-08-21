@@ -220,12 +220,11 @@
     <Compile Include="ViewModels\Account\AccountViewModels.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\Home\CustomerContactViewModel.cs" />
+    <Compile Include="ViewModels\Home\IndexHomeViewModel.cs" />
     <Compile Include="ViewModels\Manage\UserAvatarViewModel.cs" />
     <Compile Include="ViewModels\PaginationViewModel.cs" />
     <Compile Include="ViewModels\Posts\IndexPostsViewModel.cs" />
     <Compile Include="ViewModels\Posts\PostViewModel.cs" />
-    <Compile Include="ViewModels\Home\PostConciseViewModel.cs" />
-    <Compile Include="ViewModels\Home\IndexPageViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\ConfigureTwoFactorViewModel.cs" />
@@ -482,6 +481,14 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Areas\Administration\Views\Posts\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Posts\Delete.cshtml" />
+    <Content Include="Areas\Administration\Views\Posts\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Posts\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Home\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Home\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Home\Delete.cshtml" />
+    <Content Include="Areas\Administration\Views\Home\Detail.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="images\header.jpg" />
@@ -721,7 +728,6 @@
     <Folder Include="Content\Publish\Theme2\Scripts\Plugins\" />
     <Folder Include="Lib\" />
     <Folder Include="UploadedFiles\" />
-    <Folder Include="Views\CustomerContact\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
