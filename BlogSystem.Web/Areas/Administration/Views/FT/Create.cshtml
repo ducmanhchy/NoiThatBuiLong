@@ -26,24 +26,10 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.ShortContent)
-
-        @Html.EditorFor(m => m.ShortContent, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(m => m.ShortContent, string.Empty, new { @class = "text-danger" })
-    </div>
-
-    <div class="form-group">
         @Html.LabelFor(m => m.type)
 
-        @Html.EditorFor(m => m.type, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.DropDownListFor(m => m.type, Model.ListType, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.type, string.Empty, new { @class = "text-danger" })
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.Desc)
-
-        @Html.EditorFor(m => m.Desc, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(m => m.Desc, string.Empty, new { @class = "text-danger" })
     </div>
 
     <div class="form-group">
@@ -68,31 +54,8 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.TitleIMG)
-
-        @Html.EditorFor(m => m.TitleIMG, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(m => m.TitleIMG, string.Empty, new { @class = "text-danger" })
-    </div>
-
-    <div class="form-group" style="display: block;">
-        <div style="display: flex; flex-wrap: nowrap; align-items: flex-start; flex-direction: column;">
-            <img id="output" height="200" />
-            @Html.HiddenFor(m => m.linkIMG)
-            @Html.TextBox("ImgPost", "", new { type = "file", accept = "image/*", onchange = "loadFile(event)", style = "margin-top: 5px;" })
-        </div>
-    </div>
-
-    <div class="form-group">
         <button type="submit" class="btn btn-success">Tạo mới</button>
 
         @Html.ActionLink("Cancel", "Index", new { area = "Administration" }, new { @class = "btn btn-danger" })
     </div>
 }
-
-<script>var loadFile = function (event) {
-        var output = document.getElementById('output');
-        output.src = URL.createObjectURL(event.target.files[0]);
-        output.onload = function () {
-            URL.revokeObjectURL(output.src) // free memory
-        }
-    };</script>

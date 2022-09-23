@@ -12,20 +12,16 @@ namespace BlogSystem.Data.Models
             
         }
 
-        [Required]
         [MinLength(3, ErrorMessage = "The {0} must be at least {1} characters long.")]
         public string Title { get; set; }
 
-        [Required]
         [MinLength(3, ErrorMessage = "The {0} must be at least {1} characters long.")]
         public string ShortContent { get; set; }
 
-        [Required]
         [DataType(DataType.Html)]
         [MinLength(10, ErrorMessage = "The {0} must be at least {1} characters long.")]
         public string Content { get; set; }
 
-        [Required]
         public string AuthorId { get; set; }
 
         [ForeignKey("AuthorId")]

@@ -16,8 +16,9 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
 {
     public class HomeController : AdministrationController
     {
+        private static string UnitType = "Home";
         private readonly IDbRepository<Post> postsData;
-        private string UploadPath = ConfigurationManager.AppSettings["uploadfile_Home"].ToString();
+        private string UploadPath = ConfigurationManager.AppSettings["uploadfile_" + UnitType].ToString();
         private string ConfigHideADHomeControler = ConfigurationManager.AppSettings["ConfigHideADHomeControler"].ToString();
         private string[] ConfigShowADHomeControler = ConfigurationManager.AppSettings["ConfigShowADHomeControler"].ToString().Split(',');
 

@@ -8,6 +8,9 @@
     using BlogSystem.Web.Areas.Administration.ViewModels.Administration;
     using System.Web;
     using BlogSystem.Web.App_Start.Identity;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Linq;
 
     public class PostViewModel : AdministrationViewModel, IMapFrom<Post>, IHaveCustomMappings
     {
@@ -37,7 +40,25 @@
         public bool isPublish { get; set; }
 
         public string type { get; set; }
+        public string typeFullName
+        {
+            get
+            {
+                return MappedProperty.GetTypeValueByUnitKey(type, null).FirstOrDefault().Value;
+            }
+        }
         public string ParentType { get; set; }
+        public string ParentTypeFullName
+        {
+            get
+            {
+                return MappedProperty.GetMenuTypeValueByUnitKey(ParentType).FirstOrDefault().Value;
+            }
+        }
+
+        [NotMapped]
+        public IEnumerable<SelectListItem> ListType { get; set; }
+
 
         public string linkIMG { get; set; }
 

@@ -6,6 +6,9 @@ using BlogSystem.Web.Infrastructure.Mapping;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using System.Web;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace BlogSystem.Web.Areas.Administration.ViewModels.Services
 {
@@ -36,11 +39,13 @@ namespace BlogSystem.Web.Areas.Administration.ViewModels.Services
         [Display(Name = "Công khai bản ghi")]
         public bool isPublish { get; set; }
 
+        [Display(Name = "Loại menu")]
         public string type { get; set; }
-        public string typeFullName {
+        public string typeFullName
+        {
             get
             {
-                return MappedProperty.GetServiceTypeByKey(type);
+                return MappedProperty.GetTypeValueByUnitKey(type, null).FirstOrDefault().Value;
             }
         }
         public string ParentType { get; set; }
@@ -48,9 +53,12 @@ namespace BlogSystem.Web.Areas.Administration.ViewModels.Services
         {
             get
             {
-                return MappedProperty.GetMenuTypeByKey(ParentType);
+                return MappedProperty.GetMenuTypeValueByUnitKey(ParentType).FirstOrDefault().Value;
             }
         }
+
+        [NotMapped]
+        public IEnumerable<SelectListItem> ListType { get; set; }
 
         public string linkIMG { get; set; }
 

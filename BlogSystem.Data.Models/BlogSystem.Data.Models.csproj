@@ -53,8 +53,10 @@
     <Compile Include="CustomerContact.cs" />
     <Compile Include="MenuItem.cs" />
     <Compile Include="Post.cs" />
+    <Compile Include="MappedProperty.cs" />
     <Compile Include="Products.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service.cs" />
     <Compile Include="Setting.cs" />
   </ItemGroup>
   <ItemGroup>

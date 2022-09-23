@@ -13,14 +13,16 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace BlogSystem.Web.Areas.Administration.Controllers
 {
     public class FTController : AdministrationController
     {
+        private static string UnitType = "FT";
         private readonly IDbRepository<Service> postsData;
         private readonly IUrlGenerator urlGenerator;
-        private string UploadPath = ConfigurationManager.AppSettings["uploadfile_SV"].ToString();
+        private string UploadPath = ConfigurationManager.AppSettings["uploadfile_" + UnitType].ToString();
 
         public FTController(IDbRepository<Service> postsData, IUrlGenerator urlGenerator)
         {
@@ -31,11 +33,11 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
         [HttpGet]
         public ActionResult Index(int page = 1, int perPage = GlobalConstants.DefaultPageSize)
         {
-            int pagesCount = (int)Math.Ceiling(this.postsData.All().Where(x => x.ParentType == "SV" && x.status != -1).Count() / (decimal)perPage);
+            int pagesCount = (int)Math.Ceiling(this.postsData.All().Where(x => x.ParentType == UnitType && x.status != -1).Count() / (decimal)perPage);
 
             var postsPage = this.postsData
                 .All()
-                .Where(x => x.ParentType == "SV" && x.status != -1)
+                .Where(x => x.ParentType == UnitType && x.status != -1)
                 .OrderByDescending(p => p.CreatedOn)
                 .Skip(perPage * (page - 1))
                 .Take(perPage);
@@ -55,7 +57,13 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return this.View();
+            var dic = MappedProperty.GetTypeValueByUnitKey(null, UnitType);
+            var list = new List<SelectListItem>();
+            foreach (var type in dic)
+                list.Add(new SelectListItem() { Text = type.Value, Value = type.Key });
+            ServiceViewModel model = new ServiceViewModel();
+            model.ListType = list;
+            return this.View(model);
         }
 
         [HttpPost]
@@ -96,7 +104,7 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                     TitleIMG = model.TitleIMG,
                     isPublish = model.isPublish,
                     type = model.type,
-                    ParentType = "SV",
+                    ParentType = UnitType,
                     Ord = model.Ord,
                     Desc = model.Desc,
                     LinkPost = model.LinkPost,
@@ -128,6 +136,11 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
             }
 
             var model = this.Mapper.Map<ServiceViewModel>(post);
+            var dic = MappedProperty.GetTypeValueByUnitKey(null, UnitType);
+            var list = new List<SelectListItem>();
+            foreach (var type in dic)
+                list.Add(new SelectListItem() { Text = type.Value, Value = type.Key });
+            model.ListType = list;
 
             return this.View(model);
         }
@@ -171,7 +184,7 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                 post.ShortContent = model.ShortContent;
                 post.isPublish = model.isPublish;
                 post.type = model.type;
-                post.ParentType = "SV";
+                post.ParentType = UnitType;
                 post.Ord = model.Ord;
                 post.Desc = model.Desc;
                 post.LinkPost = model.LinkPost;
@@ -248,6 +261,5 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
 
             return this.RedirectToAction("Index");
         }
-
     }
 }

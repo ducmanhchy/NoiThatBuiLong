@@ -15,9 +15,10 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
 {
     public class YTController : AdministrationController
     {
+        private static string UnitType = "YT";
         private readonly IDbRepository<Post> postsData;
         private readonly IUrlGenerator urlGenerator;
-        private string UploadPath = ConfigurationManager.AppSettings["uploadfile_YT"].ToString();
+        private string UploadPath = ConfigurationManager.AppSettings["uploadfile_" + UnitType].ToString();
 
         public YTController(IDbRepository<Post> postsData, IUrlGenerator urlGenerator)
         {
@@ -28,11 +29,11 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
         [HttpGet]
         public ActionResult Index(int page = 1, int perPage = GlobalConstants.DefaultPageSize)
         {
-            int pagesCount = (int)Math.Ceiling(this.postsData.All().Where(x => x.ParentType == "YT" && x.status != -1 && x.isPublish == true).Count() / (decimal)perPage);
+            int pagesCount = (int)Math.Ceiling(this.postsData.All().Where(x => x.ParentType == UnitType && x.status != -1).Count() / (decimal)perPage);
 
             var postsPage = this.postsData
                 .All()
-                .Where(x => x.ParentType == "YT" && x.status != -1 && x.isPublish == true)
+                .Where(x => x.ParentType == UnitType && x.status != -1)
                 .OrderByDescending(p => p.CreatedOn)
                 .Skip(perPage * (page - 1))
                 .Take(perPage);
@@ -93,7 +94,7 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                     TitleIMG = model.TitleIMG,
                     isPublish = model.isPublish,
                     type = model.type,
-                    ParentType = "YT",
+                    ParentType = UnitType,
                     Ord = model.Ord,
                     Desc = model.Desc,
                     LinkPost = model.LinkPost,
@@ -167,7 +168,7 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                 post.ShortContent = model.ShortContent;
                 post.isPublish = model.isPublish;
                 post.type = model.type;
-                post.ParentType = "YT";
+                post.ParentType = UnitType;
                 post.Ord = model.Ord;
                 post.Desc = model.Desc;
                 post.LinkPost = model.LinkPost;

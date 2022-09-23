@@ -15,9 +15,10 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
 {
     public class BLController : AdministrationController
     {
+        private static string UnitType = "BL";
         private readonly IDbRepository<Post> postsData;
         private readonly IUrlGenerator urlGenerator;
-        private string UploadPath = ConfigurationManager.AppSettings["uploadfile_BL"].ToString();
+        private string UploadPath = ConfigurationManager.AppSettings["uploadfile_" + UnitType].ToString();
 
         public BLController(IDbRepository<Post> postsData, IUrlGenerator urlGenerator)
         {
@@ -28,11 +29,11 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
         [HttpGet]
         public ActionResult Index(int page = 1, int perPage = GlobalConstants.DefaultPageSize)
         {
-            int pagesCount = (int)Math.Ceiling(this.postsData.All().Where(x => x.ParentType == "BL" && x.status != -1 && x.isPublish == true).Count() / (decimal)perPage);
+            int pagesCount = (int)Math.Ceiling(this.postsData.All().Where(x => x.ParentType == UnitType && x.status != -1).Count() / (decimal)perPage);
 
             var postsPage = this.postsData
                 .All()
-                .Where(x => x.ParentType == "BL" && x.status != -1 && x.isPublish == true)
+                .Where(x => x.ParentType == UnitType && x.status != -1)
                 .OrderByDescending(p => p.CreatedOn)
                 .Skip(perPage * (page - 1))
                 .Take(perPage);
@@ -92,7 +93,7 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                     linkIMG = model.linkIMG,
                     TitleIMG = model.TitleIMG,
                     isPublish = model.isPublish,
-                    ParentType = "BL",
+                    ParentType = UnitType,
                     AuthorId = this.CurrentUser.GetUser().Id
                 };
 

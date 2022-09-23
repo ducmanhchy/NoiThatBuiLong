@@ -51,7 +51,7 @@ namespace BlogSystem.Web.Infrastructure.Attributes
             }
             else
             {
-                var services = this.Services.All().Where(x => x.ParentType == "SV" && x.status != -1 && x.isPublish == true).ToList();
+                var services = this.Services.All().Where(x => x.ParentType == "FT" && x.status != -1 && x.isPublish == true).ToList();
                 if (viewData.Where(x => x.Key == "SERVICES").Count() == 0)
                     viewData.Add("SERVICES", services);
                 else
