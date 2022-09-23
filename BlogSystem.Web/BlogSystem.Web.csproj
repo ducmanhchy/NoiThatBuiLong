@@ -176,6 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AutofacConfig.cs" />
+    <Compile Include="App_Start\DA.cs" />
     <Compile Include="App_Start\DataConfig.cs" />
     <Compile Include="App_Start\Identity\AllowFileSizeAttribute.cs" />
     <Compile Include="App_Start\Identity\ApplicationUserManager.cs" />
@@ -191,29 +192,40 @@
     <Compile Include="App_Start\ViewEngineConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\AdministrationController.cs" />
+    <Compile Include="Areas\Administration\Controllers\BLController.cs" />
     <Compile Include="Areas\Administration\Controllers\BSTController.cs" />
     <Compile Include="Areas\Administration\Controllers\CustomerContactController.cs" />
+    <Compile Include="Areas\Administration\Controllers\EXCController.cs" />
+    <Compile Include="Areas\Administration\Controllers\FTController.cs" />
     <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Administration\Controllers\RMController.cs" />
     <Compile Include="Areas\Administration\Controllers\SettingsController.cs" />
+    <Compile Include="Areas\Administration\Controllers\TKController.cs" />
     <Compile Include="Areas\Administration\Controllers\YTController.cs" />
     <Compile Include="Areas\Administration\ViewModels\Administration\AdministrationViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Administration\MenuViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Administration\PaginationViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\CustomerContact\IndexCustomerContactViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\CustomerContact\CustomerContactViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Excute\ExcuteViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Posts\IndexPostsPageViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Posts\PostViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Services\IndexServicesPageViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Services\ServiceViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AccountNewController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\CollectionController.cs" />
+    <Compile Include="Controllers\BLController.cs" />
+    <Compile Include="Controllers\BSTController.cs" />
     <Compile Include="Controllers\CustomerContactController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\FTController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IdeaController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\ThietKeNoiThatController.cs" />
+    <Compile Include="Controllers\RMController.cs" />
+    <Compile Include="Controllers\TKController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -236,6 +248,7 @@
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\Services\ServiceViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin\Theme1\Css\AdminLTE.css" />
@@ -419,7 +432,6 @@
     <Content Include="Areas\Administration\Views\Shared\_ControlSidebar.cshtml" />
     <Content Include="Content\Publish\Theme1\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\Publish\Theme1\fonts\revicons\revicons.woff" />
-    <Content Include="Content\Publish\Theme3\img\bg\bg-video.webp" />
     <Content Include="Content\Publish\Theme3\img\blog\2\blog-01.webp" />
     <Content Include="Content\Publish\Theme3\img\blog\2\blog-02.webp" />
     <Content Include="Content\Publish\Theme3\img\blog\2\blog-03.webp" />
@@ -489,6 +501,21 @@
     <Content Include="Areas\Administration\Views\Home\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Home\Delete.cshtml" />
     <Content Include="Areas\Administration\Views\Home\Detail.cshtml" />
+    <Content Include="Areas\Administration\Views\TK\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\TK\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\TK\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\EXC\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\RM\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\RM\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\RM\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\RM\Delete.cshtml" />
+    <Content Include="Areas\Administration\Views\BL\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\BL\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\BL\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\FT\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\FT\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\FT\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\FT\Delete.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="images\header.jpg" />
@@ -715,13 +742,18 @@
     <Content Include="Views\Shared\Themes\Theme3\_Layout.cshtml" />
     <Content Include="Views\Home\Catalogues.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\ThietKeNoiThat\Index.cshtml" />
+    <Content Include="Views\TK\Index.cshtml" />
     <Content Include="Views\Product\ProductDetail.cshtml" />
-    <Content Include="Views\Collection\Index.cshtml" />
+    <Content Include="Views\BST\Index.cshtml" />
     <Content Include="Views\Idea\Index.cshtml" />
-    <Content Include="Views\Idea\IdeaDetail.cshtml" />
-    <Content Include="Views\Collection\Detail.cshtml" />
-    <Content Include="Views\ThietKeNoiThat\Detail.cshtml" />
+    <Content Include="Views\Idea\Detail.cshtml" />
+    <Content Include="Views\BST\Detail.cshtml" />
+    <Content Include="Views\TK\Detail.cshtml" />
+    <Content Include="Views\BL\Detail.cshtml" />
+    <Content Include="Views\RM\Index.cshtml" />
+    <Content Include="Views\RM\Detail.cshtml" />
+    <Content Include="Views\Home\Detail.cshtml" />
+    <Content Include="Views\FT\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Publish\Theme2\Fonts\" />

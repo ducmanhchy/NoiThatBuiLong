@@ -5,6 +5,7 @@ using BlogSystem.Web.App_Start;
 using BlogSystem.Web.Areas.Administration.ViewModels.Posts;
 using BlogSystem.Web.Infrastructure.Helpers.Url;
 using System;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -16,6 +17,7 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
     {
         private readonly IDbRepository<Post> postsData;
         private readonly IUrlGenerator urlGenerator;
+        private string UploadPath = ConfigurationManager.AppSettings["uploadfile_YT"].ToString();
 
         public YTController(IDbRepository<Post> postsData, IUrlGenerator urlGenerator)
         {
@@ -26,11 +28,11 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
         [HttpGet]
         public ActionResult Index(int page = 1, int perPage = GlobalConstants.DefaultPageSize)
         {
-            int pagesCount = (int)Math.Ceiling(this.postsData.All().Where(x => x.type == "YT").Count() / (decimal)perPage);
+            int pagesCount = (int)Math.Ceiling(this.postsData.All().Where(x => x.ParentType == "YT" && x.status != -1 && x.isPublish == true).Count() / (decimal)perPage);
 
             var postsPage = this.postsData
                 .All()
-                .Where(x => x.type == "YT")
+                .Where(x => x.ParentType == "YT" && x.status != -1 && x.isPublish == true)
                 .OrderByDescending(p => p.CreatedOn)
                 .Skip(perPage * (page - 1))
                 .Take(perPage);
@@ -63,12 +65,16 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                 {
                     if (model.ImgPost != null && model.ImgPost.ContentLength > 0)
                     {
+                        Utility.checkFolderPath(Server.MapPath("~" + UploadPath));
                         if (!string.IsNullOrEmpty(model.linkIMG))
-                            Utility.removeFile(Path.Combine(Server.MapPath("~/UploadedFiles/"), model.linkIMG.Replace("/UploadedFiles/", "")));
-                        ImageUpload imageUpload = new ImageUpload { Height = 210 };
+                        {
+                            var s = model.linkIMG.Split('/');
+                            Utility.removeFile(Path.Combine(Server.MapPath("~" + model.linkIMG.Replace(s[s.Length - 1], "")), s[s.Length - 1]));
+                        }
+                        ImageUpload imageUpload = new ImageUpload { Height = 210, UploadPath = UploadPath };
                         ImageResult imageResult = imageUpload.RenameUploadFile(model.ImgPost);
                         if (imageResult.Success)
-                            model.linkIMG = "/UploadedFiles/" + imageResult.ImageName;
+                            model.linkIMG = UploadPath + imageResult.ImageName;
                         else
                             ViewBag.Error = imageResult.ErrorMessage;
                     }
@@ -76,7 +82,6 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                 catch
                 {
                     ViewBag.Error = "File upload failed!!";
-                    return View();
                 }
 
                 var post = new Post
@@ -87,8 +92,11 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                     linkIMG = model.linkIMG,
                     TitleIMG = model.TitleIMG,
                     isPublish = model.isPublish,
-                    type = "YT",
-                    //Slug = this.urlGenerator.GenerateUrl(model.Title),
+                    type = model.type,
+                    ParentType = "YT",
+                    Ord = model.Ord,
+                    Desc = model.Desc,
+                    LinkPost = model.LinkPost,
                     AuthorId = this.CurrentUser.GetUser().Id
                 };
 
@@ -131,12 +139,16 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                 {
                     if (model.ImgPost != null && model.ImgPost.ContentLength > 0)
                     {
+                        Utility.checkFolderPath(Server.MapPath("~" + UploadPath));
                         if (!string.IsNullOrEmpty(model.linkIMG))
-                            Utility.removeFile(Path.Combine(Server.MapPath("~/UploadedFiles/"), model.linkIMG.Replace("/UploadedFiles/", "")));
-                        ImageUpload imageUpload = new ImageUpload { };
+                        {
+                            var s = model.linkIMG.Split('/');
+                            Utility.removeFile(Path.Combine(Server.MapPath("~" + model.linkIMG.Replace(s[s.Length - 1], "")), s[s.Length - 1]));
+                        }
+                        ImageUpload imageUpload = new ImageUpload { Height = 210, UploadPath = UploadPath };
                         ImageResult imageResult = imageUpload.RenameUploadFile(model.ImgPost);
                         if (imageResult.Success)
-                            model.linkIMG = "/UploadedFiles/" + imageResult.ImageName;
+                            model.linkIMG = UploadPath + imageResult.ImageName;
                         else
                             ViewBag.Error = imageResult.ErrorMessage;
                     }
@@ -144,14 +156,21 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                 catch
                 {
                     ViewBag.Error = "File upload failed!!";
-                    return View();
                 }
 
                 var post = this.postsData.Find(model.Id);
 
+                post.linkIMG = model.linkIMG;
+                post.TitleIMG = model.TitleIMG;
                 post.Title = model.Title;
                 post.Content = model.Content;
-                //post.Slug = this.urlGenerator.GenerateUrl(model.Title);
+                post.ShortContent = model.ShortContent;
+                post.isPublish = model.isPublish;
+                post.type = model.type;
+                post.ParentType = "YT";
+                post.Ord = model.Ord;
+                post.Desc = model.Desc;
+                post.LinkPost = model.LinkPost;
                 post.AuthorId = this.CurrentUser.GetUser().Id;
 
                 this.postsData.Update(post);

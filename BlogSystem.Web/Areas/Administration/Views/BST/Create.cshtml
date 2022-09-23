@@ -6,7 +6,7 @@
 
 <hr />
 
-@using (Html.BeginForm("Create", "BST", FormMethod.Post))
+@using (Html.BeginForm("Create", "BST", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, string.Empty, new { @class = "text-danger" })
@@ -30,6 +30,34 @@
 
         @Html.EditorFor(m => m.ShortContent, new { htmlAttributes = new { @class = "form-control" } })
         @Html.ValidationMessageFor(m => m.ShortContent, string.Empty, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.type)
+
+        @Html.EditorFor(m => m.type, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.type, string.Empty, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Desc)
+
+        @Html.EditorFor(m => m.Desc, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.Desc, string.Empty, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Ord)
+
+        @Html.EditorFor(m => m.Ord, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.Ord, string.Empty, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.LinkPost)
+
+        @Html.EditorFor(m => m.LinkPost, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.LinkPost, string.Empty, new { @class = "text-danger" })
     </div>
 
     <div class="form-group">

@@ -6,6 +6,7 @@ namespace BlogSystem.Web.ViewModels.Home
     public class IndexHomeViewModel
     {
         public IEnumerable<PostViewModel> Posts { get; set; }
+        public IEnumerable<PostViewModel> Blogs { get; set; }
         public CustomerContactViewModel CustomerContactViewModel { get; set; }
     }
 }

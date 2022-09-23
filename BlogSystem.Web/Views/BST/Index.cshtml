@@ -1,0 +1,404 @@
+﻿@model BlogSystem.Web.ViewModels.Posts.IndexPostsViewModel
+
+@{
+    ViewBag.Title = "Bộ sưu tập";
+}
+
+<!-- page title area start -->
+<section class="page__title p-relative d-flex align-items-center" data-background="https://themepure.net/template/outstock-prv/outstock/assets/img/page-title/page-title-1.jpg" style="background-image: url(&quot;https://themepure.net/template/outstock-prv/outstock/assets/img/page-title/page-title-1.jpg&quot;);">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page__title-inner text-center">
+                    <h1>@ViewBag.Title</h1>
+                    <div class="page__title-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- page title area end -->
+@if (false)
+{
+    <!-- blog area start -->
+    <section class="blog__area pt-50 pb-50">
+        <div class="container-fluid">
+            <div class="row">
+                @if (false)
+                {
+                    <div class="col-xl-2 col-lg-3">
+                        <div class="sidebar__wrapper">
+                            @*<div class="sidebar__widget mb-55">
+                                    <div class="widget__search p-relative">
+                                        <form action="#">
+                                            <input type="text" placeholder="Search...">
+                                            <button type="submit"><i class="far fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                </div>*@
+                            <div class="sidebar__widget mb-55">
+                                <div class="sidebar__widget-title mb-25">
+                                    <h3>Danh Mục</h3>
+                                </div>
+                                <div class="sidebar__widget-content">
+                                    <div class="categories">
+                                        <div id="accordion">
+                                            @*<div class="card">
+                                                    <div class="card-header white-bg" id="accessories">
+                                                        <h5 class="mb-0">
+                                                            <button class="shop-accordion-btn" data-toggle="collapse" data-target="#collapseAccessories" aria-expanded="true" aria-controls="collapseAccessories">
+                                                                Accessories
+                                                            </button>
+                                                        </h5>
+                                                    </div>
+
+                                                    <div id="collapseAccessories" class="collapse show" aria-labelledby="accessories" data-parent="#accordion">
+                                                        <div class="card-body">
+                                                            <div class="categories__list">
+                                                                <ul>
+                                                                    <li><a href="#">Catagories 1</a></li>
+                                                                    <li><a href="#">Catagories 2</a></li>
+                                                                    <li><a href="#">Catagories 3</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>*@
+                                            <div class="card">
+                                                <div class="card-header white-bg" id="cloth">
+                                                    <h5 class="mb-0">
+                                                        <button class="shop-accordion-btn collapsed" data-toggle="collapse" data-target="#collapsecloth" aria-expanded="false" aria-controls="collapsecloth">
+                                                            Clothing
+                                                        </button>
+                                                    </h5>
+                                                </div>
+                                                <div id="collapsecloth" class="collapse" aria-labelledby="cloth" data-parent="#accordion">
+                                                    <div class="card-body">
+                                                        <div class="categories__list">
+                                                            <ul>
+                                                                <li><a href="#">Catagories 1</a></li>
+                                                                <li><a href="#">Catagories 2</a></li>
+                                                                <li><a href="#">Catagories 3</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header white-bg" id="men">
+                                                    <h5 class="mb-0">
+                                                        <button class="shop-accordion-btn collapsed" data-toggle="collapse" data-target="#collapsemen" aria-expanded="false" aria-controls="collapsemen">
+                                                            Men's
+                                                        </button>
+                                                    </h5>
+                                                </div>
+                                                <div id="collapsemen" class="collapse" aria-labelledby="men" data-parent="#accordion">
+                                                    <div class="card-body">
+                                                        <div class="categories__list">
+                                                            <ul>
+                                                                <li><a href="#">Catagories 1</a></li>
+                                                                <li><a href="#">Catagories 2</a></li>
+                                                                <li><a href="#">Catagories 3</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header white-bg" id="music">
+                                                    <h5 class="mb-0">
+                                                        <button class="shop-accordion-btn collapsed" data-toggle="collapse" data-target="#collapsemusic" aria-expanded="false" aria-controls="collapsemusic">
+                                                            Music
+                                                        </button>
+                                                    </h5>
+                                                </div>
+                                                <div id="collapsemusic" class="collapse" aria-labelledby="music" data-parent="#accordion">
+                                                    <div class="card-body">
+                                                        <div class="categories__list">
+                                                            <ul>
+                                                                <li><a href="#">Catagories 1</a></li>
+                                                                <li><a href="#">Catagories 2</a></li>
+                                                                <li><a href="#">Catagories 3</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header white-bg" id="decoration">
+                                                    <h5 class="mb-0">
+                                                        <button class="shop-accordion-btn collapsed" data-toggle="collapse" data-target="#collapseDecoration" aria-expanded="false" aria-controls="collapseDecoration">
+                                                            Decoration
+                                                        </button>
+                                                    </h5>
+                                                </div>
+                                                <div id="collapseDecoration" class="collapse" aria-labelledby="decoration" data-parent="#accordion">
+                                                    <div class="card-body">
+                                                        <div class="categories__list">
+                                                            <ul>
+                                                                <li><a href="#">Catagories 1</a></li>
+                                                                <li><a href="#">Catagories 2</a></li>
+                                                                <li><a href="#">Catagories 3</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header white-bg" id="chair">
+                                                    <h5 class="mb-0">
+                                                        <button class="shop-accordion-btn collapsed" data-toggle="collapse" data-target="#collapsechair" aria-expanded="false" aria-controls="collapsechair">
+                                                            Chair
+                                                        </button>
+                                                    </h5>
+                                                </div>
+                                                <div id="collapsechair" class="collapse" aria-labelledby="chair" data-parent="#accordion">
+                                                    <div class="card-body">
+                                                        <div class="categories__list">
+                                                            <ul>
+                                                                <li><a href="#">Catagories 1</a></li>
+                                                                <li><a href="#">Catagories 2</a></li>
+                                                                <li><a href="#">Catagories 3</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header white-bg" id="light">
+                                                    <h5 class="mb-0">
+                                                        <button class="shop-accordion-btn collapsed" data-toggle="collapse" data-target="#collapselight" aria-expanded="false" aria-controls="collapselight">
+                                                            Lighting
+                                                        </button>
+                                                    </h5>
+                                                </div>
+                                                <div id="collapselight" class="collapse" aria-labelledby="light" data-parent="#accordion">
+                                                    <div class="card-body">
+                                                        <div class="categories__list">
+                                                            <ul>
+                                                                <li><a href="#">Catagories 1</a></li>
+                                                                <li><a href="#">Catagories 2</a></li>
+                                                                <li><a href="#">Catagories 3</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="sidebar__widget mb-55">
+                                    <div class="sidebar__widget-title mb-25">
+                                        <h3>Latest Posts</h3>
+                                    </div>
+                                    <div class="sidebar__widget-content">
+                                        <div class="rc__post-wrapper">
+                                            <ul>
+                                                <li class="d-flex">
+                                                    <div class="rc__post-thumb mr-20 ">
+                                                        <a href="@Url.Action("CollectionDetail", new { })">
+                                                            <img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/sm/blog-sm-1.jpg" alt="blog-1">
+                                                        </a>
+                                                    </div>
+                                                    <div class="rc__post-content">
+                                                        <h6>
+                                                            <a href="@Url.Action("CollectionDetail", new { })">Make your life easy</a>
+                                                        </h6>
+                                                        <div class="rc__meta">
+                                                            <span> September 14, 2020</span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="d-flex">
+                                                    <div class="rc__post-thumb mr-20 ">
+                                                        <a href="@Url.Action("CollectionDetail", new { })">
+                                                            <img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/sm/blog-sm-2.jpg" alt="blog-1">
+                                                        </a>
+                                                    </div>
+                                                    <div class="rc__post-content">
+                                                        <h6>
+                                                            <a href="@Url.Action("CollectionDetail", new { })">Feel like home</a>
+                                                        </h6>
+                                                        <div class="rc__meta">
+                                                            <span>October 01, 2020</span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="d-flex">
+                                                    <div class="rc__post-thumb mr-20 ">
+                                                        <a href="@Url.Action("CollectionDetail", new { })">
+                                                            <img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/sm/blog-sm-3.jpg" alt="blog-1">
+                                                        </a>
+                                                    </div>
+                                                    <div class="rc__post-content">
+                                                        <h6>
+                                                            <a href="@Url.Action("CollectionDetail", new { })">Best thing ever</a>
+                                                        </h6>
+                                                        <div class="rc__meta">
+                                                            <span>October 05, 2020</span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>*@
+                            @*<div class="sidebar__widget mb-55">
+                                    <div class="sidebar__widget-title mb-25">
+                                        <h3>Recent Comments</h3>
+                                    </div>
+                                    <div class="sidebar__widget-content">
+                                        <div class="rc__comments">
+                                            <ul>
+                                                <li class="d-flex mb-20">
+                                                    <div class="rc__comments-avater mr-15">
+                                                        <img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/comments/avater-3.png" alt="">
+                                                    </div>
+                                                    <div class="rc__comments-content">
+                                                        <h6>Salim Rana</h6>
+                                                        <p>Hi, this is a comment....</p>
+                                                        <span>on <span class="highlight comment"> Hello world!</span></span>
+                                                    </div>
+                                                </li>
+                                                <li class="d-flex mb-20">
+                                                    <div class="rc__comments-avater mr-15">
+                                                        <img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/comments/avater-3.png" alt="">
+                                                    </div>
+                                                    <div class="rc__comments-content">
+                                                        <h6>Shahnewaz Sakil</h6>
+                                                        <p>Hi, this is a comment....</p>
+                                                        <span>on <span class="highlight comment"> Hello world!</span></span>
+                                                    </div>
+                                                </li>
+                                                <li class="d-flex mb-20">
+                                                    <div class="rc__comments-avater mr-15">
+                                                        <img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/comments/avater-3.png" alt="">
+                                                    </div>
+                                                    <div class="rc__comments-content">
+                                                        <h6>John Deo</h6>
+                                                        <p>Hi, this is a comment....</p>
+                                                        <span>on <span class="highlight comment"> Hello world!</span></span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>*@
+                            @*<div class="sidebar__widget mb-55">
+                                    <div class="sidebar__widget-title mb-25">
+                                        <h3>Archives</h3>
+                                    </div>
+                                    <div class="sidebar__widget-content">
+                                        <div class="sidebar__links">
+                                            <ul>
+                                                <li><a href="#">December 2013</a></li>
+                                                <li><a href="#"> November 2013</a></li>
+                                                <li><a href="#"> September 2013</a></li>
+                                                <li><a href="#">November 2012</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sidebar__widget mb-55">
+                                    <div class="sidebar__widget-title mb-25">
+                                        <h3>Meta</h3>
+                                    </div>
+                                    <div class="sidebar__widget-content">
+                                        <div class="sidebar__links">
+                                            <ul>
+                                                <li><a href="#">Log in</a></li>
+                                                <li><a href="#"> Entries RSS</a></li>
+                                                <li><a href="#"> Comments RSS</a></li>
+                                                <li><a href="#">WordPress.org</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>*@
+                        </div>
+                    </div>
+                }
+                <div class="col-xl-9 col-lg-8">
+                    <div class="row">
+                        @foreach (var post in Model.Posts)
+                        {
+                            <div class="col-xl-4 col-lg-4 col-md-6">
+                                <div class="blog__wrapper">
+                                    <div class="blog__item blog__border-bottom mb-60 pb-60">
+                                        <div class="blog__thumb fix">
+                                            <a href="@Url.Action("Detail", new { id = post.Id })" class="w-img">
+                                                <img src="@post.linkIMG" alt="@post.TitleIMG" height="210">
+                                            </a>
+                                        </div>
+                                        <div class="blog__content">
+                                            <h4><a href="@Url.Action("Detail", new { id = post.Id })">@post.Title</a></h4>
+                                            <div class="blog__meta">
+                                                <span>Bởi <a href="#">@post.Author</a></span>
+                                                <span> @post.CreatedOn</span>
+                                            </div>
+                                            <p>@post.ShortContent</p>
+                                            <a href="@Url.Action("Detail", new { id = post.Id })" class="os-btn">Xem thêm</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-12">
+                            @Html.Partial("_Pagination")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- blog area end -->
+}
+
+<div class="product__slider-area pt-50 pb-50">
+    <div class="container custom-container-2">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="section__title-wrapper text-center mb-55">
+                    <div class="section__title mb-10">
+                        <h2>
+                            <a href="#" title="Khám phá ngay">Khách hàng của chúng tôi, họ là ai?</a>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-40">
+            <div class="col-lg-12">
+                <div class="gallery gallery--style-3">
+                    <div class="gallery__inner">
+                        <div class="row">
+                            @foreach (var item in Model.Galleries)
+                            {
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                                    <div class="gallery__item">
+                                        <div class="gallery__item__inner">
+                                            <figure>
+                                                <a class="gallery__item__description" href="@item" data-fancybox="gallery">
+                                                    <img src="@item" style="" alt="" height="280" width="285">
+                                                </a>
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

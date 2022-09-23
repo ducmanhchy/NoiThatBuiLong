@@ -6,6 +6,6 @@
 
         public const string GuestRoleName = "Guest";
 
-        public const int DefaultPageSize = 5;
+        public const int DefaultPageSize = 10;
     }
 }

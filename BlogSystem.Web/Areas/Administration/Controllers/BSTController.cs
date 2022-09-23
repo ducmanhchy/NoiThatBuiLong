@@ -5,10 +5,12 @@ using BlogSystem.Web.App_Start;
 using BlogSystem.Web.Areas.Administration.ViewModels.Posts;
 using BlogSystem.Web.Infrastructure.Helpers.Url;
 using System;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using System.Xml.Linq;
 
 namespace BlogSystem.Web.Areas.Administration.Controllers
 {
@@ -16,6 +18,7 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
     {
         private readonly IDbRepository<Post> postsData;
         private readonly IUrlGenerator urlGenerator;
+        private string UploadPath = ConfigurationManager.AppSettings["uploadfile_BST"].ToString();
 
         public BSTController(IDbRepository<Post> postsData, IUrlGenerator urlGenerator)
         {
@@ -26,16 +29,18 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
         [HttpGet]
         public ActionResult Index(int page = 1, int perPage = GlobalConstants.DefaultPageSize)
         {
-            int pagesCount = (int)Math.Ceiling(this.postsData.All().Where(x => x.type == "BST" && x.status != -1).Count() / (decimal)perPage);
+            int pagesCount = (int)Math.Ceiling(this.postsData.All().Where(x => x.ParentType == "BST" && x.status != -1 && x.isPublish == true).Count() / (decimal)perPage);
 
             var postsPage = this.postsData
                 .All()
-                .Where(x => x.type == "BST" && x.status != -1)
+                .Where(x => x.ParentType == "BST" && x.status != -1 && x.isPublish == true)
                 .OrderByDescending(p => p.CreatedOn)
                 .Skip(perPage * (page - 1))
                 .Take(perPage);
 
             var posts = this.Mapper.Map<PostViewModel>(postsPage).ToList();
+
+            FileInfo[] fileArray = new DirectoryInfo(Server.MapPath("~" + UploadPath) + "Galleries/").GetFiles("*.jpg");
 
             var model = new IndexPostsPageViewModel
             {
@@ -43,6 +48,7 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                 CurrentPage = page,
                 PagesCount = pagesCount
             };
+            model.Galleries = fileArray.Select(x => x.Name).ToList();
 
             return this.View(model);
         }
@@ -63,12 +69,16 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                 {
                     if (model.ImgPost != null && model.ImgPost.ContentLength > 0)
                     {
+                        Utility.checkFolderPath(Server.MapPath("~" + UploadPath));
                         if (!string.IsNullOrEmpty(model.linkIMG))
-                            Utility.removeFile(Path.Combine(Server.MapPath("~/UploadedFiles/"), model.linkIMG.Replace("/UploadedFiles/", "")));
-                        ImageUpload imageUpload = new ImageUpload { Height = 210 };
+                        {
+                            var s = model.linkIMG.Split('/');
+                            Utility.removeFile(Path.Combine(Server.MapPath("~" + model.linkIMG.Replace(s[s.Length - 1], "")), s[s.Length - 1]));
+                        }
+                        ImageUpload imageUpload = new ImageUpload { Height = 210, UploadPath = UploadPath };
                         ImageResult imageResult = imageUpload.RenameUploadFile(model.ImgPost);
                         if (imageResult.Success)
-                            model.linkIMG = "/UploadedFiles/" + imageResult.ImageName;
+                            model.linkIMG = UploadPath + imageResult.ImageName;
                         else
                             ViewBag.Error = imageResult.ErrorMessage;
                     }
@@ -76,7 +86,6 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                 catch
                 {
                     ViewBag.Error = "File upload failed!!";
-                    return View();
                 }
 
                 var post = new Post
@@ -87,8 +96,11 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                     linkIMG = model.linkIMG,
                     TitleIMG = model.TitleIMG,
                     isPublish = model.isPublish,
-                    type = "BST",
-                    //Slug = this.urlGenerator.GenerateUrl(model.Title),
+                    type = model.type,
+                    ParentType = "BST",
+                    Ord = model.Ord,
+                    Desc = model.Desc,
+                    LinkPost = model.LinkPost,
                     AuthorId = this.CurrentUser.GetUser().Id
                 };
 
@@ -131,12 +143,16 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                 {
                     if (model.ImgPost != null && model.ImgPost.ContentLength > 0)
                     {
+                        Utility.checkFolderPath(Server.MapPath("~" + UploadPath));
                         if (!string.IsNullOrEmpty(model.linkIMG))
-                            Utility.removeFile(Path.Combine(Server.MapPath("~/UploadedFiles/"), model.linkIMG.Replace("/UploadedFiles/", "")));
-                        ImageUpload imageUpload = new ImageUpload { };
+                        {
+                            var s = model.linkIMG.Split('/');
+                            Utility.removeFile(Path.Combine(Server.MapPath("~" + model.linkIMG.Replace(s[s.Length - 1], "")), s[s.Length - 1]));
+                        }
+                        ImageUpload imageUpload = new ImageUpload { Height = 210, UploadPath = UploadPath };
                         ImageResult imageResult = imageUpload.RenameUploadFile(model.ImgPost);
                         if (imageResult.Success)
-                            model.linkIMG = "/UploadedFiles/" + imageResult.ImageName;
+                            model.linkIMG = UploadPath + imageResult.ImageName;
                         else
                             ViewBag.Error = imageResult.ErrorMessage;
                     }
@@ -144,7 +160,6 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                 catch
                 {
                     ViewBag.Error = "File upload failed!!";
-                    return View();
                 }
 
                 var post = this.postsData.Find(model.Id);
@@ -154,7 +169,12 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                 post.Title = model.Title;
                 post.Content = model.Content;
                 post.ShortContent = model.ShortContent;
-                //post.Slug = this.urlGenerator.GenerateUrl(model.Title);
+                post.isPublish = model.isPublish;
+                post.type = model.type;
+                post.ParentType = "BST";
+                post.Ord = model.Ord;
+                post.Desc = model.Desc;
+                post.LinkPost = model.LinkPost;
                 post.AuthorId = this.CurrentUser.GetUser().Id;
 
                 this.postsData.Update(post);
@@ -167,35 +187,21 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
         }
 
         [HttpGet]
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(string name)
         {
-            if (id == null)
-            {
+            if (string.IsNullOrEmpty(name))
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            var post = this.postsData.Find(id);
-
-            if (post == null)
-            {
-                return this.HttpNotFound();
-            }
-
-            return this.View(post);
+            ViewBag.name = name;
+            return this.View();
         }
 
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string name)
         {
             if (this.ModelState.IsValid)
-            {
-                var post = this.postsData.Find(id);
-                post.status = -1;
-                this.postsData.Update(post);
-                this.postsData.SaveChanges();
-            }
+                Utility.removeFile(Path.Combine(Server.MapPath("~" + UploadPath) + "Galleries/" + name));
 
             return this.RedirectToAction("Index");
         }

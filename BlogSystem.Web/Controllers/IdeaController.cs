@@ -43,8 +43,7 @@ namespace BlogSystem.Web.Controllers
             return this.View(model);
         }
 
-        // GET: Idea
-        public ActionResult IdeaDetail(int? id)
+        public ActionResult Detail(int? id)
         {
             if (id == null)
             {

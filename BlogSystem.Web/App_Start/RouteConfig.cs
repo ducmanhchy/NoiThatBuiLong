@@ -54,26 +54,45 @@
             routes.MapRoute(
                 name: "bo-suu-tap",
                 url: "bo-suu-tap",
-                defaults: new { controller = "Collection", action = "Index" }
+                defaults: new { controller = "BST", action = "Index" },
+                namespaces: new[] { "BlogSystem.Web.Controllers" }
             );
 
             routes.MapRoute(
                 name: "chi-tiet-bo-suu-tap",
                 url: "chi-tiet-bo-suu-tap",
-                defaults: new { controller = "Collection", action = "CollectionDetail" }
+                defaults: new { controller = "BST", action = "Detail" },
+                namespaces: new[] { "BlogSystem.Web.Controllers" }
             );
 
 
             routes.MapRoute(
                 name: "y-tuong",
                 url: "y-tuong",
-                defaults: new { controller = "Idea", action = "Index" }
+                defaults: new { controller = "Idea", action = "Index" },
+                namespaces: new[] { "BlogSystem.Web.Controllers" }
             );
 
             routes.MapRoute(
                 name: "chi-tiet-y-tuong",
                 url: "chi-tiet-y-tuong",
-                defaults: new { controller = "Idea", action = "IdeaDetail" }
+                defaults: new { controller = "Idea", action = "Detail" },
+                namespaces: new[] { "BlogSystem.Web.Controllers" }
+            );
+
+
+            routes.MapRoute(
+                name: "phong",
+                url: "phong",
+                defaults: new { controller = "RM", action = "Index" },
+                namespaces: new[] { "BlogSystem.Web.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "chi-tiet-phong",
+                url: "chi-tiet-phong",
+                defaults: new { controller = "RM", action = "Detail" },
+                namespaces: new[] { "BlogSystem.Web.Controllers" }
             );
 
             routes.MapRoute(
@@ -103,7 +122,43 @@
             routes.MapRoute(
                 name: "thiet-ke",
                 url: "thiet-ke",
-                defaults: new { controller = "ThietKeNoiThat", action = "Index" }
+                defaults: new { controller = "TK", action = "Index" },
+                namespaces: new[] { "BlogSystem.Web.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "bo-suu-tap-home-01",
+                url: "bo-suu-tap-home-01",
+                defaults: new { controller = "Home", action = "Detail", ParentType = "HOME", Unit = "sl_home_01" },
+                namespaces: new[] { "BlogSystem.Web.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "bo-suu-tap-home-02",
+                url: "bo-suu-tap-home-02",
+                defaults: new { controller = "Home", action = "Detail", ParentType = "HOME", Unit = "sl_home_02" },
+                namespaces: new[] { "BlogSystem.Web.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "bo-suu-tap-bnhome-01",
+                url: "bo-suu-tap-home-01",
+                defaults: new { controller = "Home", action = "Detail", ParentType = "HOME", Unit = "bn_home_01" },
+                namespaces: new[] { "BlogSystem.Web.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "bo-suu-tap-bnhome-02",
+                url: "bo-suu-tap-home-02",
+                defaults: new { controller = "Home", action = "Detail", ParentType = "HOME", Unit = "bn_home_02" },
+                namespaces: new[] { "BlogSystem.Web.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "bo-suu-tap-bnhome-03",
+                url: "bo-suu-tap-home-03",
+                defaults: new { controller = "Home", action = "Detail", ParentType = "HOME", Unit = "bn_home_03" },
+                namespaces: new[] { "BlogSystem.Web.Controllers" }
             );
 
 

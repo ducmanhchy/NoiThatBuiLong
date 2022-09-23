@@ -1,0 +1,365 @@
+﻿@model BlogSystem.Web.ViewModels.Posts.IndexPostsViewModel
+
+<!-- page title area start -->
+<section class="page__title p-relative d-flex align-items-center" data-background="https://themepure.net/template/outstock-prv/outstock/assets/img/page-title/page-title-1.jpg" style="background-image: url(&quot;https://themepure.net/template/outstock-prv/outstock/assets/img/page-title/page-title-1.jpg&quot;);">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page__title-inner text-center">
+                    <h1>@ViewBag.Title</h1>
+                    <div class="page__title-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- page title area end -->
+
+@if (Model.Posts.Where(x => x.type == "PK").Count() > 0)
+{
+    <section class="blog__area pt-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section__title-wrapper text-center mb-55">
+                        <div class="section__title mb-10">
+                            <h2>Phòng khách</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- blog area start -->
+            <section class="blog__area pb-50">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="row">
+                                @foreach (var post in Model.Posts.Where(x => x.type == "PK"))
+                                {
+                                    <div class="col-xl-3 col-lg-4 col-md-6">
+                                        <div class="blog__wrapper">
+                                            <div class="blog__item blog__border-bottom mb-60 pb-60">
+                                                <div class="blog__thumb fix">
+                                                    <a href="@Url.Action("Detail", new { id = post.Id })" class="w-img">
+                                                        <img src="@post.linkIMG" alt="@post.TitleIMG" height="210">
+                                                    </a>
+                                                </div>
+                                                <div class="blog__content">
+                                                    <h4><a href="@Url.Action("Detail", new { id = post.Id })">@post.Title</a></h4>
+                                                    <div class="blog__meta">
+                                                        <span>Bởi <a href="#">@post.Author</a></span>
+                                                        <span> @post.CreatedOn</span>
+                                                    </div>
+                                                    <p>@post.ShortContent</p>
+                                                    <a href="@Url.Action("Detail", new { id = post.Id })" class="os-btn">Xem thêm</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            @*<div class="row">
+                                    <div class="col-xl-12">
+                                        @Html.Partial("_Pagination")
+                                    </div>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- blog area end -->
+        </div>
+    </section>
+}
+
+@if (Model.Posts.Where(x => x.type == "PA").Count() > 0)
+{
+    <section class="blog__area pt-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section__title-wrapper text-center mb-55">
+                        <div class="section__title mb-10">
+                            <h2>Phòng ăn</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- blog area start -->
+            <section class="blog__area pb-50">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="row">
+                                @foreach (var post in Model.Posts.Where(x => x.type == "PA"))
+                                {
+                                    <div class="col-xl-3 col-lg-4 col-md-6">
+                                        <div class="blog__wrapper">
+                                            <div class="blog__item blog__border-bottom mb-60 pb-60">
+                                                <div class="blog__thumb fix">
+                                                    <a href="@Url.Action("Detail", new { id = post.Id })" class="w-img">
+                                                        <img src="@post.linkIMG" alt="@post.TitleIMG" height="210">
+                                                    </a>
+                                                </div>
+                                                <div class="blog__content">
+                                                    <h4><a href="@Url.Action("Detail", new { id = post.Id })">@post.Title</a></h4>
+                                                    <div class="blog__meta">
+                                                        <span>Bởi <a href="#">@post.Author</a></span>
+                                                        <span> @post.CreatedOn</span>
+                                                    </div>
+                                                    <p>@post.ShortContent</p>
+                                                    <a href="@Url.Action("Detail", new { id = post.Id })" class="os-btn">Xem thêm</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            @*<div class="row">
+                                    <div class="col-xl-12">
+                                        @Html.Partial("_Pagination")
+                                    </div>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- blog area end -->
+        </div>
+    </section>
+}
+
+@if (Model.Posts.Where(x => x.type == "PN").Count() > 0)
+{
+    <section class="blog__area pt-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section__title-wrapper text-center mb-55">
+                        <div class="section__title mb-10">
+                            <h2>Phòng ngủ</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- blog area start -->
+            <section class="blog__area pb-50">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="row">
+                                @foreach (var post in Model.Posts.Where(x => x.type == "PN"))
+                                {
+                                    <div class="col-xl-3 col-lg-4 col-md-6">
+                                        <div class="blog__wrapper">
+                                            <div class="blog__item blog__border-bottom mb-60 pb-60">
+                                                <div class="blog__thumb fix">
+                                                    <a href="@Url.Action("Detail", new { id = post.Id })" class="w-img">
+                                                        <img src="@post.linkIMG" alt="@post.TitleIMG" height="210">
+                                                    </a>
+                                                </div>
+                                                <div class="blog__content">
+                                                    <h4><a href="@Url.Action("Detail", new { id = post.Id })">@post.Title</a></h4>
+                                                    <div class="blog__meta">
+                                                        <span>Bởi <a href="#">@post.Author</a></span>
+                                                        <span> @post.CreatedOn</span>
+                                                    </div>
+                                                    <p>@post.ShortContent</p>
+                                                    <a href="@Url.Action("Detail", new { id = post.Id })" class="os-btn">Xem thêm</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            @*<div class="row">
+                                    <div class="col-xl-12">
+                                        @Html.Partial("_Pagination")
+                                    </div>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- blog area end -->
+        </div>
+    </section>
+}
+
+@if (Model.Posts.Where(x => x.type == "PLV").Count() > 0)
+{
+    <section class="blog__area pt-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section__title-wrapper text-center mb-55">
+                        <div class="section__title mb-10">
+                            <h2>Phòng làm việc</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- blog area start -->
+            <section class="blog__area pb-50">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="row">
+                                @foreach (var post in Model.Posts.Where(x => x.type == "PLV"))
+                                {
+                                    <div class="col-xl-3 col-lg-4 col-md-6">
+                                        <div class="blog__wrapper">
+                                            <div class="blog__item blog__border-bottom mb-60 pb-60">
+                                                <div class="blog__thumb fix">
+                                                    <a href="@Url.Action("Detail", new { id = post.Id })" class="w-img">
+                                                        <img src="@post.linkIMG" alt="@post.TitleIMG" height="210">
+                                                    </a>
+                                                </div>
+                                                <div class="blog__content">
+                                                    <h4><a href="@Url.Action("Detail", new { id = post.Id })">@post.Title</a></h4>
+                                                    <div class="blog__meta">
+                                                        <span>Bởi <a href="#">@post.Author</a></span>
+                                                        <span> @post.CreatedOn</span>
+                                                    </div>
+                                                    <p>@post.ShortContent</p>
+                                                    <a href="@Url.Action("Detail", new { id = post.Id })" class="os-btn">Xem thêm</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            @*<div class="row">
+                                    <div class="col-xl-12">
+                                        @Html.Partial("_Pagination")
+                                    </div>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- blog area end -->
+        </div>
+    </section>
+}
+
+@if (Model.Posts.Where(x => x.type == "TB").Count() > 0)
+{
+    <section class="blog__area pt-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section__title-wrapper text-center mb-55">
+                        <div class="section__title mb-10">
+                            <h2>Tủ bếp</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- blog area start -->
+            <section class="blog__area pb-50">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="row">
+                                @foreach (var post in Model.Posts.Where(x => x.type == "TB"))
+                                {
+                                    <div class="col-xl-3 col-lg-4 col-md-6">
+                                        <div class="blog__wrapper">
+                                            <div class="blog__item blog__border-bottom mb-60 pb-60">
+                                                <div class="blog__thumb fix">
+                                                    <a href="@Url.Action("Detail", new { id = post.Id })" class="w-img">
+                                                        <img src="@post.linkIMG" alt="@post.TitleIMG" height="210">
+                                                    </a>
+                                                </div>
+                                                <div class="blog__content">
+                                                    <h4><a href="@Url.Action("Detail", new { id = post.Id })">@post.Title</a></h4>
+                                                    <div class="blog__meta">
+                                                        <span>Bởi <a href="#">@post.Author</a></span>
+                                                        <span> @post.CreatedOn</span>
+                                                    </div>
+                                                    <p>@post.ShortContent</p>
+                                                    <a href="@Url.Action("Detail", new { id = post.Id })" class="os-btn">Xem thêm</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            @*<div class="row">
+                                    <div class="col-xl-12">
+                                        @Html.Partial("_Pagination")
+                                    </div>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- blog area end -->
+        </div>
+    </section>
+}
+
+@if (Model.Posts.Where(x => x.type == "HTT").Count() > 0)
+{
+    <section class="blog__area pt-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section__title-wrapper text-center mb-55">
+                        <div class="section__title mb-10">
+                            <h2>Hàng trang trí</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- blog area start -->
+            <section class="blog__area pb-50">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="row">
+                                @foreach (var post in Model.Posts.Where(x => x.type == "HTT"))
+                                {
+                                    <div class="col-xl-3 col-lg-4 col-md-6">
+                                        <div class="blog__wrapper">
+                                            <div class="blog__item blog__border-bottom mb-60 pb-60">
+                                                <div class="blog__thumb fix">
+                                                    <a href="@Url.Action("Detail", new { id = post.Id })" class="w-img">
+                                                        <img src="@post.linkIMG" alt="@post.TitleIMG" height="210">
+                                                    </a>
+                                                </div>
+                                                <div class="blog__content">
+                                                    <h4><a href="@Url.Action("Detail", new { id = post.Id })">@post.Title</a></h4>
+                                                    <div class="blog__meta">
+                                                        <span>Bởi <a href="#">@post.Author</a></span>
+                                                        <span> @post.CreatedOn</span>
+                                                    </div>
+                                                    <p>@post.ShortContent</p>
+                                                    <a href="@Url.Action("Detail", new { id = post.Id })" class="os-btn">Xem thêm</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            @*<div class="row">
+                                    <div class="col-xl-12">
+                                        @Html.Partial("_Pagination")
+                                    </div>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- blog area end -->
+        </div>
+    </section>
+}

@@ -2,7 +2,7 @@
 
 <!-- header area start -->
 <header>
-    <div id="header-sticky" class="header__area @*header__transparent*@ sticky">
+    <div id="header-sticky" class="header__area">
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4">
@@ -47,25 +47,25 @@
                                                 </li>
                                             </ul>
                                         </li>*@
+                                    <li>
+                                        <a href="/">Trang chủ</a>
+                                    </li>
                                     <li class="has-dropdown">
-                                        <a href="#">Phòng</a>
+                                        @Html.ActionLink("Phòng", "Index", "RM")
                                         <ul class="submenu transition-3">
-                                            <li><a href="#">Phòng khách</a></li>
-                                            <li><a href="#">Phòng ăn</a></li>
-                                            <li><a href="#">Phòng ngủ</a></li>
-                                            <li><a href="#">Phòng làm việc</a></li>
-                                            <li><a href="#">Tủ bếp</a></li>
-                                            <li><a href="#">Hàng trang trí</a></li>
+                                            <li>@Html.ActionLink("Phòng khách", "Index", "RM", new { type = "PK" }, null)</li>
+                                            <li>@Html.ActionLink("Phòng ăn", "Index", "RM", new { type = "PA" }, null)</li>
+                                            <li>@Html.ActionLink("Phòng ngủ", "Index", "RM", new { type = "PN" }, null)</li>
+                                            <li>@Html.ActionLink("Phòng làm việc", "Index", "RM", new { type = "PLV" }, null)</li>
+                                            <li>@Html.ActionLink("Tủ bếp", "Index", "RM", new { type = "TB" }, null)</li>
+                                            <li>@Html.ActionLink("Hàng trang trí", "Index", "RM", new { type = "HTT" }, null)</li>
                                         </ul>
                                     </li>
                                     <li>
-                                        @Html.ActionLink("Bộ sưu tập", "Index", "Collection")
+                                        @Html.ActionLink("Bộ sưu tập", "Index", "BST")
                                     </li>
                                     <li>
-                                        @Html.ActionLink("Thiết kế", "Index", "ThietKeNoiThat")
-                                    </li>
-                                    <li>
-                                        @Html.ActionLink("Ý tưởng", "Index", "Idea")
+                                        @Html.ActionLink("Thiết kế", "Index", "TK")
                                     </li>
                                 </ul>
                             </nav>
@@ -106,8 +106,8 @@
                                                         </li>
                                                     }
                                                     @*<li>
-                                                        @Html.ActionLink("Đăng ký", "Register", "Account", new { area = string.Empty }, new { @class = "dropdown-item", id = "registerLink" })
-                                                    </li>*@
+                                                            @Html.ActionLink("Đăng ký", "Register", "Account", new { area = string.Empty }, new { @class = "dropdown-item", id = "registerLink" })
+                                                        </li>*@
                                                 </ul>
                                             </div>
                                         </li>
@@ -229,46 +229,216 @@
     </div>
 </header>
 <!-- header area end -->
-<!-- scroll up area start -->
-<div class="scroll-up" id="scroll" style="display: none;">
-    <a href="javascript:void(0);" class="scroll-link"><i class="fas fa-level-up-alt"></i></a>
-</div>
-<!-- scroll up area end -->
-<!-- search area start -->
-<section class="header__search white-bg transition-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="header__search-inner text-center">
-                    <form action="#">
-                        <div class="header__search-btn">
-                            <a href="javascript:void(0);" class="header__search-btn-close"><i class="fal fa-times"></i></a>
-                        </div>
-                        <div class="header__search-header">
-                            <h3>Search</h3>
-                        </div>
-                        <div class="header__search-categories">
-                            <ul class="search-category">
-                                <li><a href="#">All Categories</a></li>
-                                <li><a href="#">Accessories</a></li>
-                                <li><a href="#">Chair</a></li>
-                                <li><a href="#">Tablet</a></li>
-                                <li><a href="#">Men</a></li>
-                                <li><a href="#">Women</a></li>
-                            </ul>
-                        </div>
-                        <div class="header__search-input p-relative">
-                            <input type="text" placeholder="Search for products... ">
-                            <button type="submit"><i class="far fa-search"></i></button>
-                        </div>
-                    </form>
+@if (!string.IsNullOrEmpty(ViewData["FacebookPageID"].ToString()))
+{
+    <!-- fb -->
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat"> </div>
+    <script>
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "@ViewData["FacebookPageID"].ToString()");
+    chatbox.setAttribute("attribution", "biz_inbox");
+    // Your SDK code
+    window.fbAsyncInit = function () {
+        FB.init({
+            xfbml: true,
+            version: 'v14.0'
+        });
+    };
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- fb end -->
+}
+<!-- contact -->
+<div id="btn-ct">
+    <div id="all-ct">
+        <!-- zalo -->
+        <div id="zalo-ct" class="button-contact">
+            <div class="ct-item">
+                <div class="ct-circle-fill"></div>
+                <div class="ct-img-circle">
+                    <a target="_blank" href="https://zalo.me/@ViewData["PhoneNumber"].ToString().Replace(" ", "")">
+                        <img src="data:image/png;base64,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">
+                    </a>
                 </div>
             </div>
         </div>
+        <!-- end zalo -->
+        <!-- Phone -->
+        <div id="phone-ct" class="button-contact">
+            <div class="ct-item">
+                <div class="ct-circle-fill"></div>
+                <div class="ct-img-circle">
+                    <a href="tel:@ViewData["PhoneNumber"].ToString().Replace(" ", "")">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABNmlDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjarY6xSsNQFEDPi6LiUCsEcXB4kygotupgxqQtRRCs1SHJ1qShSmkSXl7VfoSjWwcXd7/AyVFwUPwC/0Bx6uAQIYODCJ7p3MPlcsGo2HWnYZRhEGvVbjrS9Xw5+8QMUwDQCbPUbrUOAOIkjvjB5ysC4HnTrjsN/sZ8mCoNTIDtbpSFICpA/0KnGsQYMIN+qkHcAaY6addAPAClXu4vQCnI/Q0oKdfzQXwAZs/1fDDmADPIfQUwdXSpAWpJOlJnvVMtq5ZlSbubBJE8HmU6GmRyPw4TlSaqo6MukP8HwGK+2G46cq1qWXvr/DOu58vc3o8QgFh6LFpBOFTn3yqMnd/n4sZ4GQ5vYXpStN0ruNmAheuirVahvAX34y/Axk/96FpPYgAAACBjSFJNAAB6JQAAgIMAAPn/AACA6AAAUggAARVYAAA6lwAAF2/XWh+QAAAB/ElEQVR42uya7W3CMBCG31QM4A1aNggTlG6QbpBMkHYC1AloJ4BOABuEDcgGtBOETnD9c1ERCH/lwxeaV8oPFGP86Hy+DxMREW5Bd7gRjSDSNGn4/RiAOvm8C0ZCRD5PSkQVXSr1nK/xE3mcWimA1ZV3JYBZCIO4giQANoYxMwYS6+xKY4lT5dJPreWZY+uspqSCKPYN27GJVBDXheVSQe494ksiEWTuMXcu1dld9SARxDX1OAJ4lgjy4zDnFsC076A4adEiRwAZg4hOUSpNoCsBPDGM+HqkNGynYBCuILuWj+dgWysGsNe8nwL4GsrW0m2fxZBq9rW0rNcX5MOQ9eZD8JFahcG5g/iKT671alGAYQggpYWvpEPYWrU/HDTOfeRIX0q2SL3QN4tGhZJukVobQyXYWw7WtLDKDIuM+ZSzscyCE9PCy5IttCvnZNaeiGLNHKuz8ZVh/MXTVu/1xQKmIqLEAuJ0fNo3iG5B51oSkeKnsBi/4bG9gYB/lCytU5G9DryFW+3Gm+JLwU7ehbJrwTjq4DJU8bHcVbEV9dXXqqP6uqO5e2/QZRYJpqu2IUAA4B3tXvx8hgKp05QZW6dJqrLTNkB6vrRURLRwPHqtYgkC3cLWQAcDQGGKH13FER/NATzi786+BPDNjm1dMkfjn2pGkBHkf4D8DgBJDuDHx9BN+gAAAABJRU5ErkJggg==">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- end phone -->
     </div>
-</section>
-<div class="body-overlay transition-3"></div>
-<!-- search area end -->
+</div>
+<style>
+    #btn-ct {
+        position: fixed;
+        bottom: 0;
+        z-index: 99;
+    }
+
+    #all-ct #zalo-ct {
+        transition: 1s all;
+        -moz-transition: 1s all;
+        -webkit-transition: 1s all;
+    }
+
+    #all-ct #phone-ct {
+        transition: 0.7s all;
+        -moz-transition: 0.7s all;
+        -webkit-transition: 0.7s all;
+    }
+
+    #btn-ct .button-contact {
+        position: relative;
+    }
+
+        #btn-ct .button-contact .ct-item {
+            position: relative;
+            visibility: visible;
+            background-color: transparent;
+            width: 90px;
+            height: 90px;
+            cursor: pointer;
+            z-index: 11;
+            -webkit-backface-visibility: hidden;
+            -webkit-transform: translateZ(0);
+            transition: visibility .5s;
+            left: 0;
+            bottom: 0;
+            display: block;
+        }
+
+    #zalo-ct .ct-circle-fill {
+        box-shadow: 0 0 0 0 #2196f3;
+        background-color: rgba(33, 150, 243, 0.7);
+    }
+
+    #zalo-ct .ct-img-circle {
+        background-color: #2196F3;
+    }
+
+    .ct-circle-fill {
+        width: 65px;
+        height: 65px;
+        top: 12px;
+        left: 12px;
+        position: absolute;
+        box-shadow: 0 0 0 0 #c31d1d;
+        background-color: rgba(230, 8, 8, 0.7);
+        border-radius: 50%;
+        border: 2px solid transparent;
+        -webkit-animation: ct-circle-fill 2.3s infinite ease-in-out;
+        animation: ct-circle-fill 2.3s infinite ease-in-out;
+        transition: all .5s;
+        -webkit-transform-origin: 50% 50%;
+        -ms-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-animuiion: zoom 1.3s infinite;
+        animation: zoom 1.3s infinite;
+    }
+
+    .ct-img-circle a {
+        display: block;
+        line-height: 37px;
+    }
+
+    .ct-img-circle {
+        background-color: #e60808;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        top: 25px;
+        left: 25px;
+        position: absolute;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        -webkit-animation: ct-circle-fill 1s infinite ease-in-out;
+        animation: ct-circle-fill 1s infinite ease-in-out;
+    }
+
+        .ct-img-circle img {
+            max-height: 25px;
+            max-width: 27px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            -moz-transform: translate(-50%,-50%);
+            -webkit-transform: translate(-50%,-50%);
+            -o-transform: translate(-50%,-50%);
+        }
+
+    #phone-ct .ct-circle-fill {
+        opacity: 0.7;
+        box-shadow: 0 0 0 0 #dd3333;
+    }
+
+    .phone-bar a, #phone-ct .ct-circle-fill, #phone-ct .ct-img-circle, #phone-ct .phone-bar a {
+        background-color: #dd3333;
+    }
+</style>
+<!-- contact end -->
+<!-- scrollup start -->
+<div class="scroll-up" id="scroll" style="display: none;">
+    <a href="javascript:void(0);" class="scroll-link" style="border-radius: 50%; right: 10px; bottom: 100px; width: 50px; height: 50px; line-height: 50px;z-index: 99"><i class="fas fa-solid fa-chevron-up"></i></a>
+</div>
+<!-- scrollup end -->
+@if (false)
+{
+    <!-- search area start -->
+    <section class="header__search white-bg transition-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="header__search-inner text-center">
+                        <form action="#">
+                            <div class="header__search-btn">
+                                <a href="javascript:void(0);" class="header__search-btn-close"><i class="fal fa-times"></i></a>
+                            </div>
+                            <div class="header__search-header">
+                                <h3>Search</h3>
+                            </div>
+                            <div class="header__search-categories">
+                                <ul class="search-category">
+                                    <li><a href="#">All Categories</a></li>
+                                    <li><a href="#">Accessories</a></li>
+                                    <li><a href="#">Chair</a></li>
+                                    <li><a href="#">Tablet</a></li>
+                                    <li><a href="#">Men</a></li>
+                                    <li><a href="#">Women</a></li>
+                                </ul>
+                            </div>
+                            <div class="header__search-input p-relative">
+                                <input type="text" placeholder="Search for products... ">
+                                <button type="submit"><i class="far fa-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="body-overlay transition-3"></div>
+    <!-- search area end -->
+}
 <!-- extra info area start -->
 <section class="extra__info transition-3">
     <div class="extra__info-inner">
@@ -278,53 +448,57 @@
         <!-- side-mobile-menu start -->
         <nav class="side-mobile-menu d-block d-lg-none">
             <ul id="mobile-menu-active">
-                <li class="mega-menu has-dropdown">
-                    @Html.ActionLink("Sản Phẩm", "Index", "Product")
+                @*<li class="mega-menu has-dropdown">
                     <ul class="submenu transition-3" data-background="/Content/Publish/Theme3/img/bg/mega-menu-bg.jpg">
-                        <li class="has-dropdown">
-                            <a href="#">Shop Pages</a>
-                            <ul>
-                                <li><a href="#">Standard Shop Page</a></li>
-                                <li><a href="#">Shop Right Sidebar</a></li>
-                                <li><a href="#">Shop 4 Column</a></li>
-                            </ul>
-                        </li>
-                        <li class="has-dropdown">
-                            <a href="#">Products Pages</a>
-                            <ul>
-                                <li><a href="#">Product Details</a></li>
-                                <li><a href="#">Product Page V2</a></li>
-                                <li><a href="#">Product Page V3</a></li>
-                            </ul>
-                        </li>
-                        <li class="has-dropdown">
-                            <a href="#">Other Shop Pages</a>
-                            <ul>
-                                <li><a href="#">Wishlist</a></li>
-                                <li><a href="#">Shopping Cart</a></li>
-                                <li><a href="#">Checkout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                                 <li class="has-dropdown">
+                                     <a href="#">Shop Pages</a>
+                                     <ul>
+                                         <li><a href="#">Standard Shop Page</a></li>
+                                         <li><a href="#">Shop Right Sidebar</a></li>
+                                         <li><a href="#">Shop 4 Column</a></li>
+                                     </ul>
+                                 </li>
+                                 <li class="has-dropdown">
+                                     <a href="#">Products Pages</a>
+                                     <ul>
+                                         <li><a href="#">Product Details</a></li>
+                                         <li><a href="#">Product Page V2</a></li>
+                                         <li><a href="#">Product Page V3</a></li>
+                                     </ul>
+                                 </li>
+                                 <li class="has-dropdown">
+                                     <a href="#">Other Shop Pages</a>
+                                     <ul>
+                                         <li><a href="#">Wishlist</a></li>
+                                         <li><a href="#">Shopping Cart</a></li>
+                                         <li><a href="#">Checkout</a></li>
+                                     </ul>
+                                 </li>
+                             </ul>
+                         </li>*@
+                <li>
+                    <a href="/">Trang chủ</a>
                 </li>
                 <li class="has-dropdown">
-                    <a href="#">Phòng</a>
+                    @Html.ActionLink("Phòng", "Index", "RM")
                     <ul class="submenu transition-3">
-                        <li><a href="#">Phòng khách</a></li>
-                        <li><a href="#">Phòng ăn</a></li>
-                        <li><a href="#">Phòng ngủ</a></li>
-                        <li><a href="#">Phòng làm việc</a></li>
-                        <li><a href="#">Nhà vệ sinh</a></li>
-                        <li><a href="#">Tủ bếp</a></li>
-                        <li><a href="#">Hàng trang trí</a></li>
+                        <li>@Html.ActionLink("Phòng khách", "Index", "RM", new { type = "PK" }, null)</li>
+                        <li>@Html.ActionLink("Phòng ăn", "Index", "RM", new { type = "PA" }, null)</li>
+                        <li>@Html.ActionLink("Phòng ngủ", "Index", "RM", new { type = "PN" }, null)</li>
+                        <li>@Html.ActionLink("Phòng làm việc", "Index", "RM", new { type = "PLV"}, null)</li>
+                        <li>@Html.ActionLink("Tủ bếp", "Index", "RM", new { type = "TB" }, null)</li>
+                        <li>@Html.ActionLink("Hàng trang trí", "Index", "RM", new { type = "HTT" }, null)</li>
                     </ul>
                 </li>
-                <li><a href="#">Bộ sưu tập</a></li>
                 <li>
-                    @Html.ActionLink("Thiết kế", "Index", "Blog")
+                    @Html.ActionLink("Bộ sưu tập", "Index", "BST")
                 </li>
-                <li><a href="#">Showroom</a></li>
-                <li><a href="#">Ý tưởng</a></li>
+                <li>
+                    @Html.ActionLink("Thiết kế", "Index", "TK")
+                </li>
+                @*<li>
+                    @Html.ActionLink("Ý tưởng", "Index", "Idea")
+                </li>*@
             </ul>
         </nav>
         <!-- side-mobile-menu end -->

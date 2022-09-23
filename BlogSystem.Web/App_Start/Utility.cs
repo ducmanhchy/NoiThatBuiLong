@@ -4,11 +4,19 @@ using System.Drawing;
 using System;
 using System.IO;
 using System.Web;
+using System.Configuration;
 
 namespace BlogSystem.Web.App_Start
 {
     public static class Utility
     {
+        public static void checkFolderPath(string path)
+        {
+            string subPath = path;
+            bool exists = Directory.Exists(subPath);
+            if (!exists)
+                Directory.CreateDirectory(subPath);
+        }
         public static void removeFile(string file)
         {
             if (File.Exists(file))
@@ -20,13 +28,11 @@ namespace BlogSystem.Web.App_Start
 
     public class ImageUpload
     {
-        // set default size here
         public int Width { get; set; }
 
         public int Height { get; set; }
 
-        // folder for the upload, you can put this in the web.config
-        private readonly string UploadPath = "~/UploadedFiles/";
+        public string UploadPath { get; set; }
 
         public ImageResult RenameUploadFile(HttpPostedFileBase file, Int32 counter = 0)
         {
@@ -62,8 +68,6 @@ namespace BlogSystem.Web.App_Start
             {
                 file.SaveAs(path);
                 Image imgOriginal = Image.FromFile(path);
-
-                //pass in whatever value you want
                 Image imgActual = Scale(imgOriginal);
                 imgOriginal.Dispose();
                 imgActual.Save(path);
@@ -75,6 +79,7 @@ namespace BlogSystem.Web.App_Start
             }
             catch (Exception ex)
             {
+                Utility.removeFile(path);
                 imageResult.Success = false;
                 imageResult.ErrorMessage = ex.Message;
                 return imageResult;
@@ -84,19 +89,10 @@ namespace BlogSystem.Web.App_Start
         private bool ValidateExtension(string extension)
         {
             extension = extension.ToLower();
-            switch (extension)
-            {
-                case ".jpg":
-                    return true;
-                case ".png":
-                    return true;
-                case ".gif":
-                    return true;
-                case ".jpeg":
-                    return true;
-                default:
-                    return false;
-            }
+            var AllowImgFile = ConfigurationManager.AppSettings["AllowImgFile"];
+            if (AllowImgFile.Contains(extension))
+                return true;
+            return false;
         }
 
         private Image Scale(Image imgPhoto)

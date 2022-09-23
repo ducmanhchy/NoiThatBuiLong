@@ -1,0 +1,376 @@
+﻿@model BlogSystem.Web.ViewModels.Posts.IndexPostsViewModel
+
+@{
+    ViewBag.Title = "Thiết kế nội thất";
+}
+
+<!-- page title area start -->
+<section class="page__title p-relative d-flex align-items-center" data-background="https://themepure.net/template/outstock-prv/outstock/assets/img/page-title/page-title-1.jpg" style="background-image: url(&quot;https://themepure.net/template/outstock-prv/outstock/assets/img/page-title/page-title-1.jpg&quot;);">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page__title-inner text-center">
+                    <h1 class="uppercase">@ViewBag.Title</h1>
+                    <div class="page__title-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">@ViewBag.Title</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- page title area end -->
+@if (Model.Posts.Where(x => x.type.Contains("GT")).Count() > 0)
+{
+    foreach (var post in Model.Posts.Where(x => x.type.Contains("GT")).OrderBy(x => x.Ord))
+    {
+        <section class="blog__area pt-50 pb-50">
+            <div class="container">
+                <div class="row">
+                    @if (post.type.Contains("-L-"))
+                    {
+                        <div class="col-xs-12 col-sm-6">
+                            @Html.Raw(post.Content)
+                            <a href="@Url.Action("Detail", new { id = post.Id })" target="_self" class="ct-btn-4 btn bg-light br-47">
+                                <span>xem mẫu thiết kế</span>
+                                <i class="icon-checkmark"></i>
+                            </a>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <img class="w-inherit" src="@post.linkIMG" alt="@post.TitleIMG">
+                        </div>
+                    }
+                    else if (post.type.Contains("-R-"))
+                    {
+                        <div class="col-xs-12 col-sm-6">
+                            <img class="w-inherit" src="@post.linkIMG" alt="@post.TitleIMG">
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            @Html.Raw(post.Content)
+                            <a href="@Url.Action("Detail", new { id = post.Id })" target="_self" class="ct-btn-4 btn bg-light br-47">
+                                <span>xem mẫu thiết kế</span>
+                                <i class="icon-checkmark"></i>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+    }
+}
+<section class="blog__area pt-50 pb-50">
+    <div class="container custom-container-2">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="section__title-wrapper text-center mb-55">
+                    <div class="section__title mb-10">
+                        <h2>Quy Trình Thiết Kế</h2>
+                    </div>
+                    <div class="section__sub-title">
+                        <p>Mirum est notare quam littera gothica quam nunc putamus parum claram!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <h4><span>Bước 1: Tiếp nhận thông tin và khảo sát</span></h4>
+                <p>Tổng hợp các yêu cầu của khách hàng về dạng công trình (căn hộ, biệt thự, nhà phố); mức độ thiết kế (cung cấp sản phẩm, cải tạo, thiết kế mới);…sau đó tiến hành khảo sát hiện trạng mặt bằng, đo đạc thực tế.</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <h4><span>Bước 2: Thiết kế ý tưởng</span></h4>
+                <p>Dựa trên các thông tin thu thập từ khách hàng kết hợp với khảo sát hiện trạng, thiết kế Nhà Xinh sẽ lên ý tưởng, giải pháp không gian mặt bằng, bố trí thỏa mãn tất cả các yêu cầu và mục tiêu đề ra. Đến thời điểm này chúng tôi có thể lên dự toán sơ bộ chi phí đầu tư cho khách hàng nắm rõ, dựa trên bảng vẽ mặt bằng không gian đã thống nhất trước đó.</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <h4><span>Bước 3: Thiết kế phối cảnh 3D</span></h4>
+                <p>Dựa trên mặt bằng đã được khách hàng duyệt thiết kế Nhà Xinh sẽ thể hiện cho khách hàng thấy rõ không gian nội thất bên trong một cách cụ thể và sống động qua phương pháp vẽ phối cảnh 3D. Thể hiện đầy đủ màu sắc, chất liệu vật liệu để khách hàng thấy rõ không gian và nội thất của căn phòng mình trước khi thi công.</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <h4><span>Bước 4: Ký hợp đồng thi công</span></h4>
+                <p>Sau khi chỉnh sửa thiết kế 3D cuối cùng giữa thiết kế Nhà Xinh và khách hàng. Hai bên sẽ tiến đến ký kết hợp đồng thi công theo bảng dự toán báo giá cuối cùng dựa trên thiết kế khách hàng đã duyệt.</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <h4><span>Bước 5: Triển khai thi công</span></h4>
+                <p>Đội ngũ giám sát kết hợp với thiết kế Nhà Xinh sẽ triển khai thi công tại công trình theo tiến độ đã đưa ra.</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <h4><span>Bước 6: Nghiệm thu bàn giao</span></h4>
+                <p>Tiến hành nghiệm thu và bàn giao công trình sau khi hoàn tất các hạng mục thi công. Bên Nhà Xinh sẽ tiến hành vệ sinh toàn bộ công trình, hướng dẫn khách hàng sử dụng sản phẩm, lập biên bản nghiệm thu, bàn giao công trình.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- blog area end -->
+@if (false)
+{
+    <!-- product__slider-area start -->
+    <div class="product__slider-area pt-50 pb-50">
+        <div class="container custom-container-2">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section__title-wrapper text-center mb-55">
+                        <div class="section__title mb-10">
+                            <h2>Các Dự Án Đã Làm</h2>
+                        </div>
+                        <div class="section__sub-title">
+                            <p>những mẫu sản phẩm của các dự án nổi bật!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-40">
+                <div class="col-lg-12">
+                    <div class="product__slider-active owl-carousel">
+                        <div class="product__slider-item">
+                            <div class="product__item mb-40">
+                                <div class="product__wrapper">
+                                    <div class="product__thumb">
+                                        <a href="#" class="w-img">
+                                            <img src="https://themepure.net/template/outstock-prv/outstock/assets/img/shop/product/product-2.jpg" alt="product-img">
+                                            <img class="product__thumb-2" src="https://themepure.net/template/outstock-prv/outstock/assets/img/shop/product/product-2.jpg" alt="product-img">
+                                        </a>
+                                    </div>
+                                    <div class="product__content product__content-2 p-relative text-center">
+                                        <div class="product__content-inner">
+                                            <h4><a href="#">Haggar Men's Heather</a></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product__slider-item">
+                            <div class="product__item mb-40">
+                                <div class="product__wrapper">
+                                    <div class="product__thumb">
+                                        <a href="#" class="w-img">
+                                            <img src="https://themepure.net/template/outstock-prv/outstock/assets/img/shop/product/product-8.jpg" alt="product-img">
+                                            <img class="product__thumb-2" src="https://themepure.net/template/outstock-prv/outstock/assets/img/shop/product/product-8.jpg" alt="product-img">
+                                        </a>
+                                        <div class="product__sale product__sale-3">
+                                            <span class="new">new</span>
+                                        </div>
+                                    </div>
+                                    <div class="product__content product__content-2 p-relative text-center">
+                                        <div class="product__content-inner">
+                                            <h4><a href="#">Adrianna Papell Women's</a></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product__slider-item">
+                            <div class="product__item mb-40">
+                                <div class="product__wrapper">
+                                    <div class="product__thumb">
+                                        <a href="#" class="w-img">
+                                            <img src="https://themepure.net/template/outstock-prv/outstock/assets/img/shop/product/product-11.jpg" alt="product-img">
+                                            <img class="product__thumb-2" src="https://themepure.net/template/outstock-prv/outstock/assets/img/shop/product/product-11.jpg" alt="product-img">
+                                        </a>
+                                        <div class="product__sale product__sale-3">
+                                            <span class="new">new</span>
+                                        </div>
+                                    </div>
+                                    <div class="product__content product__content-2 p-relative text-center">
+                                        <div class="product__content-inner">
+                                            <h4><a href="#">Calvin Klein Women's</a></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product__slider-item">
+                            <div class="product__item mb-40">
+                                <div class="product__wrapper">
+                                    <div class="product__thumb">
+                                        <a href="#" class="w-img">
+                                            <img src="https://themepure.net/template/outstock-prv/outstock/assets/img/shop/product/product-12.jpg" alt="product-img">
+                                            <img class="product__thumb-2" src="https://themepure.net/template/outstock-prv/outstock/assets/img/shop/product/product-12.jpg" alt="product-img">
+                                        </a>
+                                    </div>
+                                    <div class="product__content product__content-2 p-relative text-center">
+                                        <div class="product__content-inner">
+                                            <h4><a href="#">Cotton Twill Suit</a></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product__slider-item">
+                            <div class="product__item mb-40">
+                                <div class="product__wrapper">
+                                    <div class="product__thumb">
+                                        <a href="#" class="w-img">
+                                            <img src="https://themepure.net/template/outstock-prv/outstock/assets/img/shop/product/product-1.jpg" alt="product-img">
+                                            <img class="product__thumb-2" src="https://themepure.net/template/outstock-prv/outstock/assets/img/shop/product/product-1.jpg" alt="product-img">
+                                        </a>
+                                        <div class="product__sale product__sale-3">
+                                            <span class="new">new</span>
+                                        </div>
+                                    </div>
+                                    <div class="product__content product__content-2 p-relative text-center">
+                                        <div class="product__content-inner">
+                                            <h4><a href="#">Calvin Klein Women's</a></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product__slider-item">
+                            <div class="product__item mb-40">
+                                <div class="product__wrapper">
+                                    <div class="product__thumb">
+                                        <a href="#" class="w-img">
+                                            <img src="https://themepure.net/template/outstock-prv/outstock/assets/img/shop/product/product-9.jpg" alt="product-img">
+                                            <img class="product__thumb-2" src="https://themepure.net/template/outstock-prv/outstock/assets/img/shop/product/product-9.jpg" alt="product-img">
+                                        </a>
+                                    </div>
+                                    <div class="product__content product__content-2 p-relative text-center">
+                                        <div class="product__content-inner">
+                                            <h4><a href="#">Cotton Twill Suit</a></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product__slider-area end -->
+}
+
+<div class="product__slider-area pt-50 pb-50">
+    <div class="container custom-container-2">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="section__title-wrapper text-center mb-55">
+                    <div class="section__title mb-10">
+                        <h2>
+                            <a href="#" title="Khám phá ngay">Feedback từ khách hàng</a>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-40">
+            <div class="col-lg-12">
+                <div class="gallery gallery--style-3">
+                    <div class="gallery__inner">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                                <div class="gallery__item">
+                                    <div class="gallery__item__inner">
+                                        <figure>
+                                            <a class="gallery__item__description" href="https://nouhaus.vn/wp-content/uploads/2021/07/197337280_579854196768680_7950044509551544837_n-510x510.jpg" data-fancybox="gallery">
+                                                <img src="https://nouhaus.vn/wp-content/uploads/2021/07/197337280_579854196768680_7950044509551544837_n-510x510.jpg" style="" alt="Quán Coffee" height="280" width="285">
+                                                <span class="gallery__item__title">Quán Coffee</span>
+                                                <span class="gallery__item__subtitle">Feedback </span>
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                                <div class="gallery__item">
+                                    <div class="gallery__item__inner">
+                                        <figure>
+                                            <a class="gallery__item__description" href="https://nouhaus.vn/wp-content/uploads/2017/02/205208859_978635162882978_7317450997096812261_n.jpg" data-fancybox="gallery">
+                                                <img src="https://nouhaus.vn/wp-content/uploads/2017/02/205208859_978635162882978_7317450997096812261_n.jpg" style="" alt="Thư viện sách" height="280" width="285">
+                                                <span class="gallery__item__title">Thư viện sách</span>
+                                                <span class="gallery__item__subtitle">Feedback </span>
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                                <div class="gallery__item">
+                                    <div class="gallery__item__inner">
+                                        <figure>
+                                            <a class="gallery__item__description" href="https://nouhaus.vn/wp-content/uploads/2017/02/109341360_2717032138529905_5996039352820786994_n.jpg" data-fancybox="gallery">
+                                                <img src="https://nouhaus.vn/wp-content/uploads/2017/02/109341360_2717032138529905_5996039352820786994_n.jpg" style="" alt="Showroom xe hơi" height="280" width="285">
+                                                <span class="gallery__item__title">Showroom xe hơi</span>
+                                                <span class="gallery__item__subtitle">Feedback </span>
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                                <div class="gallery__item">
+                                    <div class="gallery__item__inner">
+                                        <figure>
+                                            <a class="gallery__item__description" href="https://nouhaus.vn/wp-content/uploads/2017/02/116115141_318754106173128_3212846408848235059_n.jpg" data-fancybox="gallery">
+                                                <img src="https://nouhaus.vn/wp-content/uploads/2017/02/116115141_318754106173128_3212846408848235059_n.jpg" style="" alt="Triển lãm tranh" height="280" width="285">
+                                                <span class="gallery__item__title">Triển lãm tranh</span>
+                                                <span class="gallery__item__subtitle">Feedback </span>
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                                <div class="gallery__item">
+                                    <div class="gallery__item__inner">
+                                        <figure>
+                                            <a class="gallery__item__description" href="https://nouhaus.vn/wp-content/uploads/2017/02/120796453_776076576292585_8024995380791158068_n-1.jpg" data-fancybox="gallery">
+                                                <img src="https://nouhaus.vn/wp-content/uploads/2017/02/120796453_776076576292585_8024995380791158068_n-1.jpg" style="" alt="Khách sạn" height="280" width="285">
+                                                <span class="gallery__item__title">Khách sạn</span>
+                                                <span class="gallery__item__subtitle">Feedback </span>
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                                <div class="gallery__item">
+                                    <div class="gallery__item__inner">
+                                        <figure>
+                                            <a class="gallery__item__description" href="https://nouhaus.vn/wp-content/uploads/2017/02/88917641_596246634260917_7297929258631633647_n.jpg" data-fancybox="gallery">
+                                                <img src="https://nouhaus.vn/wp-content/uploads/2017/02/88917641_596246634260917_7297929258631633647_n.jpg" style="" alt="Resort" height="280" width="285">
+                                                <span class="gallery__item__title">Resort</span>
+                                                <span class="gallery__item__subtitle">Feedback </span>
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                                <div class="gallery__item">
+                                    <div class="gallery__item__inner">
+                                        <figure>
+                                            <a class="gallery__item__description" href="https://nouhaus.vn/wp-content/uploads/2017/02/131473632_385523039542651_6637291951334515088_n.jpg" data-fancybox="gallery">
+                                                <img src="https://nouhaus.vn/wp-content/uploads/2017/02/131473632_385523039542651_6637291951334515088_n.jpg" style="" alt="Rạp chiếu phim" height="280" width="285">
+                                                <span class="gallery__item__title">Rạp chiếu phim</span>
+                                                <span class="gallery__item__subtitle">Feedback </span>
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                                <div class="gallery__item">
+                                    <div class="gallery__item__inner">
+                                        <figure>
+                                            <a class="gallery__item__description" href="https://nouhaus.vn/wp-content/uploads/2021/07/169302241_495305851878685_1791042007248217734_n.jpg" data-fancybox="gallery">
+                                                <img src="https://nouhaus.vn/wp-content/uploads/2021/07/169302241_495305851878685_1791042007248217734_n.jpg" style="" alt="Bar and lounge" height="280" width="285">
+                                                <span class="gallery__item__title">Bar and lounge</span>
+                                                <span class="gallery__item__subtitle">Feedback </span>
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

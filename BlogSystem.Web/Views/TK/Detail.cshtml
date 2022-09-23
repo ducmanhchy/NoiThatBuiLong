@@ -1,0 +1,133 @@
+﻿@model BlogSystem.Web.ViewModels.Posts.PostViewModel
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<section class="blog__area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12">
+                <div class="postbox__title mb-55">
+                    <h1><a href="blog.html">@Model.Title</a></h1>
+                    <div class="blog__meta">
+                        <span>Bởi <a href="#">@Model.Author</a></span>
+                        <span>/ @Model.CreatedOn</span>
+                    </div>
+                </div>
+                <div class="postbox__thumb w-img">
+                    <img src="@Model.linkIMG" alt="">
+                </div>
+                <div class="postbox__wrapper mb-70">
+                    @Html.Raw(Model.Content)
+                </div>
+
+                <div class="postbox__share mb-95">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="postbox__social">
+                                <span>Chia sẻ:</span>
+                                <ul>
+                                    <li><a href="https://facebook.com/sharer/sharer.php?u={@Url}" target="_blank" rel="nofollow noopener noreferrer"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="https://twitter.com/intent/tweet/?text=&amp;url=" target="_blank" rel="nofollow noopener noreferrer"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#" target="_blank" rel="nofollow noopener noreferrer"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="https://pinterest.com/pin/create/button/?url=&amp;media=&amp;description="><i class="fab fa-pinterest-p"></i></a></li>
+                                    <li><a href="#" target="_blank" rel="nofollow noopener noreferrer"><i class="fab fa-youtube"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="postbox__tag f-right">
+                                <span>Tags :</span>
+                                <a href="#">Furniture,</a>
+                                <a href="#">Erentheme,</a>
+                                <a href="#">Chair, </a>
+                                <a href="#">Decor</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="postbox__related-title">
+                    <h3>Các bài viết tương tự</h3>
+                </div>
+                <div class="postbox__related-item">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4">
+                            <div class="blog__item mb-30">
+                                <div class="blog__thumb fix">
+                                    <a href="blog-details.html" class="w-img"><img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/blog-1.jpg" alt="blog"></a>
+                                </div>
+                                <div class="blog__content">
+                                    <h4><a href="blog-details.html">Anteposuerit litterarum formas.</a></h4>
+                                    <div class="blog__meta">
+                                        <span>By <a href="#">Shahnewaz Sakil</a></span>
+                                        <span>/ September 14, 2017</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4">
+                            <div class="blog__item mb-30">
+                                <div class="blog__thumb fix">
+                                    <a href="blog-details.html" class="w-img"><img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/blog-1.jpg" alt="blog"></a>
+                                </div>
+                                <div class="blog__content">
+                                    <h4><a href="blog-details.html">Anteposuerit litterarum formas.</a></h4>
+                                    <div class="blog__meta">
+                                        <span>By <a href="#">Shahnewaz Sakil</a></span>
+                                        <span>/ September 14, 2017</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4">
+                            <div class="blog__item mb-30">
+                                <div class="blog__thumb fix">
+                                    <a href="blog-details.html" class="w-img"><img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/blog-1.jpg" alt="blog"></a>
+                                </div>
+                                <div class="blog__content">
+                                    <h4><a href="blog-details.html">Anteposuerit litterarum formas.</a></h4>
+                                    <div class="blog__meta">
+                                        <span>By <a href="#">Shahnewaz Sakil</a></span>
+                                        <span>/ September 14, 2017</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4">
+                            <div class="blog__item mb-30">
+                                <div class="blog__thumb fix">
+                                    <a href="blog-details.html" class="w-img"><img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/blog-1.jpg" alt="blog"></a>
+                                </div>
+                                <div class="blog__content">
+                                    <h4><a href="blog-details.html">Anteposuerit litterarum formas.</a></h4>
+                                    <div class="blog__meta">
+                                        <span>By <a href="#">Shahnewaz Sakil</a></span>
+                                        <span>/ September 14, 2017</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4">
+                            <div class="blog__item mb-30">
+                                <div class="blog__thumb fix">
+                                    <a href="blog-details.html" class="w-img"><img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/blog-1.jpg" alt="blog"></a>
+                                </div>
+                                <div class="blog__content">
+                                    <h4><a href="blog-details.html">Anteposuerit litterarum formas.</a></h4>
+                                    <div class="blog__meta">
+                                        <span>By <a href="#">Shahnewaz Sakil</a></span>
+                                        <span>/ September 14, 2017</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

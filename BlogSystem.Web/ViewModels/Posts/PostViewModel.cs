@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BlogSystem.Data.Models;
 using BlogSystem.Web.Infrastructure.Mapping;
+using System.Collections.Generic;
 
 namespace BlogSystem.Web.ViewModels.Posts
 {
@@ -33,6 +34,8 @@ namespace BlogSystem.Web.ViewModels.Posts
         public string LinkPost { get; set; }
 
         public int Ord { get; set; }
+
+        public IEnumerable<PostViewModel> Posts { get; set; }
 
         public void CreateMappings(IMapperConfigurationExpression config)
         {

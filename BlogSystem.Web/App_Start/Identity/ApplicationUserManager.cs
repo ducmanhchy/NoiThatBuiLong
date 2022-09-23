@@ -26,8 +26,8 @@ namespace BlogSystem.Web.Identity
             };
             // Configure user lockout defaults
             UserLockoutEnabledByDefault = true;
-            DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
-            MaxFailedAccessAttemptsBeforeLockout = 5;
+            DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(60);
+            MaxFailedAccessAttemptsBeforeLockout = 10;
 
             RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<ApplicationUser>
             {

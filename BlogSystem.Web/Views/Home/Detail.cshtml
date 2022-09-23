@@ -1,0 +1,67 @@
+﻿@model BlogSystem.Web.ViewModels.Posts.PostViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<section class="page__title p-relative d-flex align-items-center mb-70" data-background="@Model.linkIMG" style="background-image: url('@Model.linkIMG');">
+</section>
+
+<section class="blog__area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12">
+                <div class="postbox__wrapper mb-70">
+                    @Html.Raw(Model.Content)
+                </div>
+
+                <div class="postbox__share mb-95">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="postbox__social">
+                                <span>Chia sẻ:</span>
+                                <ul>
+                                    <li><a href="https://facebook.com/sharer/sharer.php?u=@HttpContext.Current.Request.Url.AbsoluteUri" target="_blank" rel="nofollow noopener noreferrer"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="https://twitter.com/intent/tweet/?text=&amp;url=@HttpContext.Current.Request.Url.AbsoluteUri" target="_blank" rel="nofollow noopener noreferrer"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#" target="_blank" rel="nofollow noopener noreferrer"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="https://pinterest.com/pin/create/button/?url=@HttpContext.Current.Request.Url.AbsoluteUri&amp;media=&amp;description="><i class="fab fa-pinterest-p"></i></a></li>
+                                    <li><a href="#" target="_blank" rel="nofollow noopener noreferrer"><i class="fab fa-youtube"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        @*<div class="col-xl-6 col-lg-6 col-md-6">
+                                <div class="postbox__tag f-right">
+                                    <span>Tags :</span>
+                                    <a href="#">Furniture,</a>
+                                    <a href="#">Erentheme,</a>
+                                    <a href="#">Chair, </a>
+                                    <a href="#">Decor</a>
+                                </div>
+                            </div>*@
+                    </div>
+                </div>
+
+                @*<div class="postbox__related-title">
+                    <h3>Các bài viết tương tự</h3>
+                </div>
+                <div class="postbox__related-item">
+                    <div class="row">
+                        @foreach (var post in Model.Posts)
+                        {
+                            <div class="col-xl-4 col-lg-4 col-md-4">
+                                <div class="blog__item mb-30">
+                                    <div class="blog__thumb fix">
+                                        <a href="@Url.Action("Detail", new { id = post.Id })" class="w-img"><img src="@post.linkIMG" alt="@post.TitleIMG" height="240"></a>
+                                    </div>
+                                    <div class="blog__content">
+                                        <h4><a href="@Url.Action("Detail", new { id = post.Id })">@post.Title</a></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>*@
+            </div>
+        </div>
+    </div>
+</section>

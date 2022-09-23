@@ -6,5 +6,6 @@ namespace BlogSystem.Web.Areas.Administration.ViewModels.Posts
     public class IndexPostsPageViewModel : PaginationViewModel
     {
         public IEnumerable<PostViewModel> Posts { get; set; }
+        public IEnumerable<string> Galleries { get; set; }
     }
 }

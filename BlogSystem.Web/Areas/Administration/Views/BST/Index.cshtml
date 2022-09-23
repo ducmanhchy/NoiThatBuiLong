@@ -10,37 +10,68 @@
         Tạo mới
     </a>
 </header>
-<br/>
-
-@if (Model.Posts.Any())
+<br />
+@if (false)
+{
+    if (Model.Posts.Any())
+    {
+        <table class="table table-inverse">
+            <thead>
+                <tr>
+                    <th width="15%">Tiêu đề</th>
+                    <th>Nội dung tóm tắt</th>
+                    <th width="10%">Ngày tạo</th>
+                    <th width="10%">Người tạo</th>
+                    <th width="15%">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var post in Model.Posts)
+                {
+                    <tr>
+                        <td>@post.Title</td>
+                        <td>@Html.DisplayFor(m => post.ShortContent)</td>
+                        <td>@Html.DisplayFor(m => post.CreatedOn)</td>
+                        <td>@post.Author</td>
+                        <td>
+                            <div class="btn-group">
+                                <a href="@Url.Action("Edit", "BST", new {area = "Administration", id = post.Id})" class="btn btn-warning">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    Sửa
+                                </a>
+                                <a href="@Url.Action("Delete", "BST", new {area = "Administration", id = post.Id})" class="btn btn-danger">
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+@if (Model.Galleries.Any())
 {
     <table class="table table-inverse">
         <thead>
             <tr>
-                <th width="15%">Tiêu đề</th>
-                <th>Nội dung tóm tắt</th>
-                <th width="10%">Ngày tạo</th>
-                <th width="10%">Người tạo</th>
+                <th width="20%">Ảnh</th>
                 <th width="15%">Thao tác</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var post in Model.Posts)
+            @foreach (var item in Model.Galleries)
             {
                 <tr>
-                    <td>@post.Title</td>
-                    <td>@Html.DisplayFor(m => post.ShortContent)</td>
-                    <td>@Html.DisplayFor(m => post.CreatedOn)</td>
-                    <td>@post.Author</td>
+                    <td>
+                        <img src="@((System.Configuration.ConfigurationManager.AppSettings["uploadfile_BST"].ToString()) + "Galleries/" + item)" height="100" />
+                    </td>
                     <td>
                         <div class="btn-group">
-                            <a href="@Url.Action("Edit", "BST", new {area = "Administration", id = post.Id})" class="btn btn-warning">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                Sửa
-                            </a>
-                            <a href="@Url.Action("Delete", "BST", new {area = "Administration", id = post.Id})" class="btn btn-danger">
+                            <a href="@Url.Action("Delete", "BST", new {area = "Administration", name = item})" data-form-method="post" class="btn btn-danger">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                Delete
+                                Xóa
                             </a>
                         </div>
                     </td>
@@ -55,3 +86,16 @@ else
 }
 
 @Html.Partial("_Pagination")
+
+<script>
+    $("a[data-form-method='post']").click(function (event) {
+        event.preventDefault();
+        var element = $(this);
+        var action = element.attr("href");
+        element.closest("form").each(function () {
+            var form = $(this);
+            form.attr("action", action);
+            form.submit();
+        });
+    });
+</script>

@@ -19,280 +19,105 @@
     </section>
     <!-- slider area end -->
 }
-<!-- banner__area-df start -->
-<div class="banner__area-df mt-10">
-    <div class="banner__item-3 mb-30">
-        <div class="banner__item-3-image m-img">
-            <img src="https://nhaxinhsaigon.com/source/noi-that/175-mau-noi-that-nha-dep/phong-an-trang-tri-dep-175.jpg" alt="">
-        </div>
-        <div class="banner__content-5">
-            <h5>FASHION FOR MEN’S</h5>
-            <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.</p>
-            <a href="shop-3-col.html" class="os-btn-5">Shop Now</a>
+
+@if (Model.Posts.Where(x => x.type == "BN_HOME").Count() > 0)
+{
+    <!-- banner__area-df start -->
+    <div class="banner__area-df mt-10">
+        @foreach (var item in Model.Posts.Where(x => x.type == "BN_HOME").OrderBy(x => x.Ord))
+        {
+            @Html.Raw(item.Content);
+        }
+    </div>
+    <!-- banner__area-df end -->
+}
+
+@if (Model.Posts.Where(x => x.type == "PL_HOME").Count() > 0)
+{
+    <!-- product__view-area start -->
+    <div class="product__view-area pt-60 pb-60">
+        <div class="container custom-container-2">
+            @Html.Raw(Model.Posts.Where(x => x.type == "PL_HOME").FirstOrDefault().Content);
         </div>
     </div>
-    <div class="banner__item-3 mb-30">
-        <div class="banner__item-3-image m-img">
-            <img src="https://fishcreekexchange.ca/assets/build/img/website/pages/home/Fulcrum%20-%20Graywood%20-%20High%20Resolution-011.png" alt="">
-        </div>
-        <div class="banner__content-5">
-            <h5>FASHION FOR MEN’S</h5>
-            <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.</p>
-            <a href="shop-3-col.html" class="os-btn-5">Shop Now</a>
-        </div>
-    </div>
-    <div class="banner__item-3 mb-30">
-        <div class="banner__item-3-image m-img">
-            <img src="https://hips.hearstapps.com/hmg-prod/images/header-popular-design-ideas-1648567133.jpeg?crop=1.00xw:1.00xh;0,0&resize=1200:*" alt="">
-        </div>
-        <div class="banner__content-5">
-            <h5>FASHION FOR MEN’S</h5>
-            <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.</p>
-            <a href="shop-3-col.html" class="os-btn-5">Shop Now</a>
-        </div>
-    </div>
-</div>
-<!-- banner__area-df end -->
-<!-- product__view-area start -->
-<div class="product__view-area pt-60 pb-60">
-    <div class="container custom-container-2">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="section__wrapper text-center">
-                    <h3 class="section__title-2"><span>SẢN PHẨM ĐƯỢC BÁN NHIỀU NHẤT</span></h3>
-                    <p>Eodem modo typi, qui nunc nobis videntur parum clari</p>
+    <!-- product__view-area end -->
+}
+
+@if (Model.Posts.Where(x => x.type == "VD_HOME").Count() > 0)
+{
+    <!-- video__area-df start -->
+    <div class="container">
+        <div class="video__area-df" data-background="@Model.Posts.Where(x => x.type == "VD_HOME").FirstOrDefault().linkIMG">
+            <div class="video__content text-center">
+                <div class="video__button mb-60">
+                    <a data-fancybox href="@Model.Posts.Where(x => x.type == "VD_HOME").FirstOrDefault().LinkPost"><i class="fas fa-play"></i></a>
                 </div>
-            </div>
-        </div>
-        <div class="row mt-40">
-            <div class="col-xl-6 col-lg-6">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-12 col-md-6">
-                                <div class="product__item mb-40">
-                                    <div class="product__wrapper">
-                                        <div class="product__thumb">
-                                            <a href="#" class="w-img">
-                                                <img src="http://viecorp.vn/upload/elfinder/b%C3%A0n%20%C4%83n.jpg" alt="product-img">
-                                                <img class="product__thumb-2" src="https://nhaxinh.com/wp-content/uploads/2022/07/mau-phong-khach-nha-xinh-banner-27722.jpg" alt="product-img">
-                                            </a>
-                                            <div class="product__action-3 transition-3">
-                                                <a href="#" class="action-btn"> <i class="fal fa-plus"></i> Select Option</a>
-                                                <a href="#" class="action-btn" data-toggle="modal" data-target="#productModalId"><i class="fal fa-eye"></i></a>
-                                            </div>
-                                            <div class="product__sale product__sale-3">
-                                                <span class="new">new</span>
-                                            </div>
-                                        </div>
-                                        <div class="product__content product__content-2 p-relative text-center">
-                                            <div class="product__content-inner">
-                                                <div class="rating">
-                                                    <a href="#"><i class="fal fa-star"></i></a>
-                                                    <a href="#"><i class="fal fa-star"></i></a>
-                                                    <a href="#"><i class="fal fa-star"></i></a>
-                                                    <a href="#"><i class="fal fa-star"></i></a>
-                                                    <a href="#"><i class="fal fa-star"></i></a>
-                                                </div>
-                                                <h4><a href="#">Haggar Men's Heather</a></h4>
-                                                @*<div class="product__price-3">
-                                                        <span>$85.00</span>
-                                                        <span class="old-price"><del>$96.00</del></span>
-                                                    </div>*@
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-12 col-md-6">
-                                <div class="product__item mb-40">
-                                    <div class="product__wrapper">
-                                        <div class="product__thumb">
-                                            <a href="#" class="w-img">
-                                                <img src="http://viecorp.vn/upload/elfinder/kitchen%20design%202022.jpg" alt="product-img">
-                                                <img class="product__thumb-2" src="http://viecorp.vn/upload/elfinder/%C4%91%C6%A1n%20gi%E1%BA%A3n.jpg" alt="product-img">
-                                            </a>
-                                            <div class="product__action-3 transition-3">
-                                                <a href="#" class="action-btn"> <i class="fal fa-plus"></i> Select Option</a>
-                                                <a href="#" class="action-btn" data-toggle="modal" data-target="#productModalId"><i class="fal fa-eye"></i></a>
-                                            </div>
-                                            <div class="product__sale product__sale-3">
-                                                <span class="new">new</span>
-                                            </div>
-                                        </div>
-                                        <div class="product__content product__content-2 p-relative text-center">
-                                            <div class="product__content-inner">
-                                                <div class="rating">
-                                                    <a href="#"><i class="fal fa-star"></i></a>
-                                                    <a href="#"><i class="fal fa-star"></i></a>
-                                                    <a href="#"><i class="fal fa-star"></i></a>
-                                                    <a href="#"><i class="fal fa-star"></i></a>
-                                                    <a href="#"><i class="fal fa-star"></i></a>
-                                                </div>
-                                                <h4><a href="#"> Cotton Twill Suit</a> </h4>
-                                                @*<div class="product__price-3">
-                                                        <span>$90.00</span>
-                                                        <span class="old-price"> <del>$100.00</del></span>
-                                                    </div>*@
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="product__big-image effectThree mb-40">
-                            <a href="#"><img src="https://nhaxinh.com/wp-content/uploads/2022/07/mau-phong-ngu-nx-banner-27722.jpg" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-lg-6">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="product__big-image effectThree mb-40">
-                            <a href="#"><img src="https://nhaxinh.com/wp-content/uploads/2022/07/mau-phong-an-nha-xinh-banner-27722.jpg" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-12 col-md-6">
-                                <div class="product__item mb-40">
-                                    <div class="product__wrapper">
-                                        <div class="product__thumb">
-                                            <a href="#" class="w-img">
-                                                <img src="https://noithatxinh.vn/Images/Upload/images/mua-noi-that-o-dau-re-va-dep-1.jpg" alt="product-img">
-                                                <img class="product__thumb-2" src="https://nhaxinhsaigon.com/source/noi-that/175-mau-noi-that-nha-dep/trang-tri-phong-ngu-dep-175.jpg" alt="product-img">
-                                            </a>
-                                            <div class="product__action-3 transition-3">
-                                                <a href="#" class="action-btn"> <i class="fal fa-plus"></i> Select Option</a>
-                                                <a href="#" class="action-btn" data-toggle="modal" data-target="#productModalId"><i class="fal fa-eye"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product__content product__content-2 p-relative text-center">
-                                            <div class="product__content-inner">
-                                                <div class="rating">
-                                                    <a href="#"><i class="fal fa-star"></i></a>
-                                                    <a href="#"><i class="fal fa-star"></i></a>
-                                                    <a href="#"><i class="fal fa-star"></i></a>
-                                                    <a href="#"><i class="fal fa-star"></i></a>
-                                                    <a href="#"><i class="fal fa-star"></i></a>
-                                                </div>
-                                                <h4><a href="#">Adrianna Papell Women's</a></h4>
-                                                @*<div class="product__price-3">
-                                                        <span>$96.00</span>
-                                                    </div>*@
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-12 col-md-6">
-                                <div class="product__item mb-40">
-                                    <div class="product__wrapper">
-                                        <div class="product__thumb">
-                                            <a href="#" class="w-img">
-                                                <img src="https://nhaxinhsaigon.com/source/noi-that/175-mau-noi-that-nha-dep/phong-ngu-ong-ba-175.jpg" alt="product-img">
-                                                <img class="product__thumb-2" src="https://nhaxinhsaigon.com/source/noi-that/175-mau-noi-that-nha-dep/phong-ngu-doi-175.jpg" alt="product-img">
-                                            </a>
-                                            <div class="product__action-3 transition-3">
-                                                <a href="#" class="action-btn"> <i class="fal fa-plus"></i> Select Option</a>
-                                                <a href="#" class="action-btn" data-toggle="modal" data-target="#productModalId"><i class="fal fa-eye"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product__content product__content-2 p-relative text-center">
-                                            <div class="product__content-inner">
-                                                <div class="rating">
-                                                    <a href="#"><i class="fal fa-star"></i></a>
-                                                    <a href="#"><i class="fal fa-star"></i></a>
-                                                    <a href="#"><i class="fal fa-star"></i></a>
-                                                    <a href="#"><i class="fal fa-star"></i></a>
-                                                    <a href="#"><i class="fal fa-star"></i></a>
-                                                </div>
-                                                <h4><a href="#">Calvin Klein Women's</a></h4>
-                                                @*<div class="product__price-3">
-                                                        <span>$80.00</span>
-                                                    </div>*@
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @Html.Raw(Model.Posts.Where(x => x.type == "VD_HOME").FirstOrDefault().Content)
             </div>
         </div>
     </div>
-</div>
-<!-- product__view-area end -->
-<!-- video__area-df start -->
-<div class="container">
-    <div class="video__area-df" data-background="Content/Publish/Theme3/img/bg/bg-video.webp">
-        <div class="video__content text-center">
-            <div class="video__button mb-60">
-                <a data-fancybox href="https://www.youtube.com/watch?v=9ykYqS63Go0"><i class="fas fa-play"></i></a>
-            </div>
-            <h5 class="video__title">AWESOME VIDEO LIGHTBOX </h5>
-            <p>Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. </p>
-        </div>
-    </div>
-</div>
-<!-- video__area-df end -->
+    <!-- video__area-df end -->
+}
+
 <!-- catalogues -->
 <div class="container-fluid mt-50 pt-20 pb-20 grey-bg">
     <div class="row d-flex align-items-center" style="justify-content: space-evenly;">
         <div class="col-xs-12 pt-3 pb-3 pl-3 pr-3">
-            Catalogue OutStock 2022 nay đã ra mắt với những không gian và ý tưởng mới. Tìm cảm hứng cho bạn ngay nhé.
+            Catalogue N 2022 nay đã ra mắt với những không gian và ý tưởng mới. Tìm cảm hứng cho bạn ngay nhé.
         </div>
         <a href="#" class="os-btn-4">Xem catalogue online</a>
     </div>
 </div>
 <!-- end catalogues -->
-<!-- banner area start -->
-<div class="banner__area pt-60">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="banner__item mb-30 p-relative">
-                    <div class="banner__thumb fix">
-                        <a href="#" class="w-img"><img src="https://themepure.net/template/outstock-prv/outstock/assets/img/shop/banner/banner-sm-1.jpg" alt="banner"></a>
-                    </div>
-                    <div class="banner__content p-absolute transition-3">
-                        <h5><a href="#">Sunflower Clock <br> Quartz Hands</a></h5>
-                        <a href="#" class="link-btn">Discover now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="banner__item mb-30 p-relative">
-                    <div class="banner__thumb fix">
-                        <a href="#" class="w-img"><img src="https://themepure.net/template/outstock-prv/outstock/assets/img/shop/banner/banner-sm-2.jpg" alt="banner"></a>
-                    </div>
-                    <div class="banner__content p-absolute transition-3">
-                        <h5><a href="#">Chair Kimi No Isu <br> Project</a></h5>
-                        <a href="#" class="link-btn">Discover now</a>
+
+@if (false)
+{
+    <!-- banner area start -->
+    <div class="banner__area pt-60">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="banner__item mb-30 p-relative">
+                        <div class="banner__thumb fix">
+                            <a href="#" class="w-img"><img src="https://themepure.net/template/outstock-prv/outstock/assets/img/shop/banner/banner-sm-1.jpg" alt="banner"></a>
+                        </div>
+                        <div class="banner__content p-absolute transition-3">
+                            <h5><a href="#">Sunflower Clock <br> Quartz Hands</a></h5>
+                            <a href="#" class="link-btn">Discover now</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="banner__item mb-30 p-relative">
-                    <div class="banner__thumb fix">
-                        <a href="#" class="w-img"><img src="https://themepure.net/template/outstock-prv/outstock/assets/img/shop/banner/banner-sm-3.jpg" alt="banner"></a>
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="banner__item mb-30 p-relative">
+                        <div class="banner__thumb fix">
+                            <a href="#" class="w-img"><img src="https://themepure.net/template/outstock-prv/outstock/assets/img/shop/banner/banner-sm-2.jpg" alt="banner"></a>
+                        </div>
+                        <div class="banner__content p-absolute transition-3">
+                            <h5><a href="#">Chair Kimi No Isu <br> Project</a></h5>
+                            <a href="#" class="link-btn">Discover now</a>
+                        </div>
                     </div>
-                    <div class="banner__content p-absolute transition-3">
-                        <h5><a href="#">Sweeper and Dustpan <br> by Jan Kochanski </a></h5>
-                        <a href="#" class="link-btn">Discover now</a>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="banner__item mb-30 p-relative">
+                        <div class="banner__thumb fix">
+                            <a href="#" class="w-img"><img src="https://themepure.net/template/outstock-prv/outstock/assets/img/shop/banner/banner-sm-3.jpg" alt="banner"></a>
+                        </div>
+                        <div class="banner__content p-absolute transition-3">
+                            <h5><a href="#">Sweeper and Dustpan <br> by Jan Kochanski </a></h5>
+                            <a href="#" class="link-btn">Discover now</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- banner area end -->
-<!-- product area start -->
-@*<div class="box-25">
+    <!-- banner area end -->
+}
+@if (false)
+{
+    <!-- product area start -->
+    <div class="box-25">
         <section class="product__area pt-60">
             <div class="container">
                 <div class="row">
@@ -691,10 +516,13 @@
                 </div>
             </div>
         </section>
-    </div>*@
-<!-- product area end -->
-<!-- sale off area start -->
-@*<section class="sale__area">
+    </div>
+    <!-- product area end -->
+}
+@if (false)
+{
+    <!-- sale off area start -->
+    <section class="sale__area">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -1139,90 +967,56 @@
                 </div>
             </div>
         </div>
-    </section>*@
-<!-- sale off area end -->
-<!-- blog area start -->
-<section class="blog__area pt-50">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="section__title-wrapper text-center mb-55">
-                    <div class="section__title mb-10">
-                        <h2>Các bài đăng trên blog</h2>
-                    </div>
-                    <div class="section__sub-title">
-                        <p>Mirum est notare quam littera gothica quam nunc putamus parum claram!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="blog__slider owl-carousel">
-                    <div class="blog__item mb-30">
-                        <div class="blog__thumb fix">
-                            <a href="#" class="w-img"><img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/blog-1.jpg" alt="blog"></a>
+    </section>
+    <!-- sale off area end -->
+    <!-- blog area start -->
+}
+
+@if (Model.Blogs.Count() > 0)
+{
+    <!-- blog area -->
+    <section class="blog__area pt-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section__title-wrapper text-center mb-55">
+                        <div class="section__title mb-10">
+                            <h2>Các bài đăng trên blog</h2>
                         </div>
-                        <div class="blog__content">
-                            <h4><a href="#">Anteposuerit litterarum formas.</a></h4>
-                            <div class="blog__meta">
-                                <span>By <a href="#">Shahnewaz Sakil</a></span>
-                                <span>/ September 14, 2017</span>
-                            </div>
-                            <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram.</p>
-                            <a href="#" class="os-btn">read more</a>
-                        </div>
-                    </div>
-                    <div class="blog__item mb-30">
-                        <div class="blog__thumb fix">
-                            <a href="#" class="w-img"><img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/blog-2.jpg" alt="blog"></a>
-                        </div>
-                        <div class="blog__content">
-                            <h4><a href="#">Hanging fruit to identify</a></h4>
-                            <div class="blog__meta">
-                                <span>By <a href="#">Shahnewaz Sakil</a></span>
-                                <span>/ September 14, 2017</span>
-                            </div>
-                            <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram.</p>
-                            <a href="#" class="os-btn">read more</a>
-                        </div>
-                    </div>
-                    <div class="blog__item mb-30">
-                        <div class="blog__thumb fix">
-                            <a href="#" class="w-img"><img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/blog-3.jpg" alt="blog"></a>
-                        </div>
-                        <div class="blog__content">
-                            <h4><a href="#">The information highway will</a></h4>
-                            <div class="blog__meta">
-                                <span>By <a href="#">Shahnewaz Sakil</a></span>
-                                <span>/ September 14, 2017</span>
-                            </div>
-                            <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram.</p>
-                            <a href="#" class="os-btn">read more</a>
-                        </div>
-                    </div>
-                    <div class="blog__item mb-30">
-                        <div class="blog__thumb fix">
-                            <a href="#" class="w-img"><img src="https://themepure.net/template/outstock-prv/outstock/assets/img/blog/blog-2.jpg" alt="blog"></a>
-                        </div>
-                        <div class="blog__content">
-                            <h4><a href="#">Additional clickthroughs from</a></h4>
-                            <div class="blog__meta">
-                                <span>By <a href="#">Shahnewaz Sakil</a></span>
-                                <span>/ September 14, 2017</span>
-                            </div>
-                            <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram.</p>
-                            <a href="#" class="os-btn">read more</a>
+                        <div class="section__sub-title">
+                            <p>Ý tưởng sáng tạo hàng đầu</p>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="blog__slider owl-carousel">
+                        @foreach (var item in Model.Blogs.OrderBy(x => x.Ord))
+                        {
+                            <div class="blog__item mb-30">
+                                <div class="blog__thumb fix">
+                                    <a href="@Url.Action("Detail", "BL", new { id = item.Id })" class="w-img"><img src="@item.linkIMG" alt="@item.TitleIMG" height="250"></a>
+                                </div>
+                                <div class="blog__content">
+                                    <h4><a href="@Url.Action("Detail", "BL", new { id = item.Id })">@item.Title</a></h4>
+                                    <p>@item.ShortContent</p>
+                                    <a href="@Url.Action("Detail", "BL", new { id = item.Id })" class="os-btn">Xem thêm</a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
-<!-- blog area end -->
-<!-- product__slider-area start -->
-@*<div class="product__slider-area pt-60">
+    </section>
+    <!-- blog area end -->
+}
+
+@if (false)
+{
+    <!-- product__slider-area start -->
+    <div class="product__slider-area pt-60">
         <div class="container custom-container-2">
             <div class="row">
                 <div class="col-xl-12">
@@ -1440,10 +1234,13 @@
                 </div>
             </div>
         </div>
-    </div>*@
-<!-- product__slider-area end -->
-<!-- testimonial__area start -->
-@*<div class="testimonial__area grey-bg pt-95 pb-95">
+    </div>
+    <!-- product__slider-area end -->
+}
+@if (false)
+{
+    <!-- testimonial__area start -->
+    <div class="testimonial__area grey-bg pt-95 pb-95">
         <div class="container custom-container-2">
             <div class="row">
                 <div class="col-lg-12">
@@ -1488,10 +1285,13 @@
                 </div>
             </div>
         </div>
-    </div>*@
-<!-- testimonial__area end -->
-<!-- blog__slider-area start -->
-@*<div class="blog__slider-area pt-100 pb-100">
+    </div>
+    <!-- testimonial__area end -->
+}
+@if (false)
+{
+    <!-- blog__slider-area start -->
+    <div class="blog__slider-area pt-100 pb-100">
         <div class="container custom-container-2">
             <div class="row">
                 <div class="col-xl-12">
@@ -1632,8 +1432,10 @@
                 </div>
             </div>
         </div>
-    </div>*@
-<!-- blog__slider-area end -->
+    </div>
+    <!-- blog__slider-area end -->
+}
+
 <!-- contact area start -->
 <section class="contact__area pb-100 pt-95">
     <div class="container">
@@ -1644,7 +1446,7 @@
                         <h2>Bạn cần hỗ trợ?</h2>
                     </div>
                     <div class="section__sub-title">
-                        <p>Xin vui lòng để lại yêu cầu hỗ trợ của bạn.</p>
+                        <p>Xin vui lòng để lại thông tin, chúng tôi sẽ hệ lại với bạn.</p>
                     </div>
                 </div>
             </div>
@@ -1750,6 +1552,7 @@
     </div>
 </section>
 <!-- contact area end -->
+
 <!-- brand__area start -->
 <div class="brand__area pb-90">
     <div class="container custom-container-2">
@@ -1788,9 +1591,11 @@
     </div>
 </div>
 <!-- brand__area end -->
-<!-- shop modal start -->
-<!-- Modal -->
-@*<div class="modal fade" id="productModalId" tabindex="-1" role="dialog" aria-hidden="true">
+
+@if (false)
+{
+    <!-- Modal -->
+    <div class="modal fade" id="productModalId" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered product-modal" role="document">
             <div class="modal-content">
                 <div class="product__modal-wrapper p-relative">
@@ -1908,5 +1713,6 @@
                 </div>
             </div>
         </div>
-    </div>*@
-<!-- shop modal end -->
+    </div>
+    <!-- shop modal end -->
+}

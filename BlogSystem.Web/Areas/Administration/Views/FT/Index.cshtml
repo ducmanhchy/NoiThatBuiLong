@@ -1,0 +1,61 @@
+﻿@model BlogSystem.Web.Areas.Administration.ViewModels.Services.IndexServicesPageViewModel
+
+@{
+    ViewBag.Title = "Dịch vụ";
+}
+
+<header>
+    <a href="@Url.Action("Create", "FT", new {area = "Administration"})" class="btn btn-success float-right">
+        <span class="fa fa-plus" aria-hidden="true"></span>
+        Tạo mới
+    </a>
+    <a href="@Url.Action("RemoveCache", "FT", new {area = "Administration"})" class="btn btn-danger float-right">
+        <span class="fa fa-trash-o" aria-hidden="true"></span>
+        Xóa cache
+    </a>
+</header>
+<br />
+
+@if (Model.Posts.Any())
+{
+    <table class="table table-inverse">
+        <thead>
+            <tr>
+                <th>Tên menu</th>
+                <th width="15%">Loại menu</th>
+                <th width="10%">Thứ tự</th>
+                <th width="10%">Công khai</th>
+                <th width="15%">Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var post in Model.Posts)
+            {
+                <tr>
+                    <td>@post.Title</td>
+                    <td>@Html.DisplayFor(m => post.typeFullName)</td>
+                    <td>@post.Ord</td>
+                    <td>@post.isPublish</td>
+                    <td>
+                        <div class="btn-group">
+                            <a href="@Url.Action("Edit", "FT", new {area = "Administration", id = post.Id})" class="btn btn-warning">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                Sửa
+                            </a>
+                            <a href="@Url.Action("Delete", "FT", new {area = "Administration", id = post.Id})" class="btn btn-danger">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h2>Dữ liệu không có sẵn.</h2>
+}
+
+@Html.Partial("_Pagination")

@@ -10,12 +10,16 @@ using System;
 using BlogSystem.Web.App_Start;
 using System.IO;
 using System.Net;
+using System.Configuration;
 
 namespace BlogSystem.Web.Areas.Administration.Controllers
 {
     public class HomeController : AdministrationController
     {
         private readonly IDbRepository<Post> postsData;
+        private string UploadPath = ConfigurationManager.AppSettings["uploadfile_Home"].ToString();
+        private string ConfigHideADHomeControler = ConfigurationManager.AppSettings["ConfigHideADHomeControler"].ToString();
+        private string[] ConfigShowADHomeControler = ConfigurationManager.AppSettings["ConfigShowADHomeControler"].ToString().Split(',');
 
         public HomeController(IDbRepository<Post> postsData)
         {
@@ -25,11 +29,11 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
         [HttpGet]
         public ActionResult Index(int page = 1, int perPage = GlobalConstants.DefaultPageSize)
         {
-            int pagesCount = (int)Math.Ceiling(this.postsData.All().Where(x => (x.type != "BST" && x.type != "YT") && x.status != -1).Count() / (decimal)perPage);
+            int pagesCount = (int)Math.Ceiling(this.postsData.All().Where(x => !ConfigHideADHomeControler.Contains(x.ParentType) && x.status != -1).Count() / (decimal)perPage);
 
             var postsPage = this.postsData
                 .All()
-                .Where(x => (x.type != "BST" && x.type != "YT") && x.status != -1)
+                .Where(x => !ConfigHideADHomeControler.Contains(x.ParentType) && x.status != -1)
                 .OrderByDescending(p => p.CreatedOn)
                 .Skip(perPage * (page - 1))
                 .Take(perPage);
@@ -46,7 +50,6 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
             return this.View(model);
         }
 
-
         [ChildActionOnly]
         [OutputCache(Duration = 6 * 10 * 60)]
         public PartialViewResult AdminMenu()
@@ -59,11 +62,10 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
             //    .ToList();
             MenuAdminViewModel menuItems = new MenuAdminViewModel();
             List<MenuAdmin> listmenu = new List<MenuAdmin>();
-            listmenu.Add(new MenuAdmin { ControlerName = "Home", Name = "Trang chủ" });
-            listmenu.Add(new MenuAdmin { ControlerName = "CustomerContact", Name = "Thông tin liên hệ" });
-            listmenu.Add(new MenuAdmin { ControlerName = "YT", Name = "Ý tưởng" });
-            listmenu.Add(new MenuAdmin { ControlerName = "BST", Name = "Bộ sưu tập" });
-            //listmenu.Add(new MenuAdmin { ControlerName = "Settings", Name = "Cài đặt" });
+            foreach (var item in ConfigShowADHomeControler)
+            {
+                listmenu.Add(new MenuAdmin { ControlerName = item.Split('#')[0], Name = item.Split('#')[1] });
+            }
             menuItems.Menus = listmenu;
             return this.PartialView(menuItems);
         }
@@ -85,12 +87,16 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                 {
                     if (model.ImgPost != null && model.ImgPost.ContentLength > 0)
                     {
+                        Utility.checkFolderPath(Server.MapPath("~" + UploadPath));
                         if (!string.IsNullOrEmpty(model.linkIMG))
-                            Utility.removeFile(Path.Combine(Server.MapPath("~/UploadedFiles/"), model.linkIMG.Replace("/UploadedFiles/", "")));
-                        ImageUpload imageUpload = new ImageUpload { Height = 210 };
+                        {
+                            var s = model.linkIMG.Split('/');
+                            Utility.removeFile(Path.Combine(Server.MapPath("~" + model.linkIMG.Replace(s[s.Length - 1], "")), s[s.Length - 1]));
+                        }
+                        ImageUpload imageUpload = new ImageUpload { Height = 210, UploadPath = UploadPath };
                         ImageResult imageResult = imageUpload.RenameUploadFile(model.ImgPost);
                         if (imageResult.Success)
-                            model.linkIMG = "/UploadedFiles/" + imageResult.ImageName;
+                            model.linkIMG = UploadPath + imageResult.ImageName;
                         else
                             ViewBag.Error = imageResult.ErrorMessage;
                     }
@@ -98,7 +104,6 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                 catch
                 {
                     ViewBag.Error = "File upload failed!!";
-                    return View();
                 }
 
                 var post = new Post
@@ -156,12 +161,16 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                 {
                     if (model.ImgPost != null && model.ImgPost.ContentLength > 0)
                     {
+                        Utility.checkFolderPath(Server.MapPath("~" + UploadPath));
                         if (!string.IsNullOrEmpty(model.linkIMG))
-                            Utility.removeFile(Path.Combine(Server.MapPath("~/UploadedFiles/"), model.linkIMG.Replace("/UploadedFiles/", "")));
-                        ImageUpload imageUpload = new ImageUpload { };
+                        {
+                            var s = model.linkIMG.Split('/');
+                            Utility.removeFile(Path.Combine(Server.MapPath("~" + model.linkIMG.Replace(s[s.Length - 1], "")), s[s.Length - 1]));
+                        }
+                        ImageUpload imageUpload = new ImageUpload { Height = 210, UploadPath = UploadPath };
                         ImageResult imageResult = imageUpload.RenameUploadFile(model.ImgPost);
                         if (imageResult.Success)
-                            model.linkIMG = "/UploadedFiles/" + imageResult.ImageName;
+                            model.linkIMG = UploadPath + imageResult.ImageName;
                         else
                             ViewBag.Error = imageResult.ErrorMessage;
                     }
@@ -169,7 +178,6 @@ namespace BlogSystem.Web.Areas.Administration.Controllers
                 catch
                 {
                     ViewBag.Error = "File upload failed!!";
-                    return View();
                 }
 
                 var post = this.postsData.Find(model.Id);

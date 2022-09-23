@@ -3,19 +3,19 @@ using BlogSystem.Data.Models;
 using BlogSystem.Data.Repositories;
 using BlogSystem.Web.Infrastructure.Helpers.Url;
 using BlogSystem.Web.ViewModels.Posts;
-using System;
-using System.Linq;
 using System.Net;
+using System;
 using System.Web.Mvc;
+using System.Linq;
 
 namespace BlogSystem.Web.Controllers
 {
-    public class CollectionController : BaseController
+    public class TKController : BaseController
     {
         private readonly IDbRepository<Post> postsData;
         private readonly IUrlGenerator urlGenerator;
 
-        public CollectionController(IDbRepository<Post> postsData, IUrlGenerator urlGenerator)
+        public TKController(IDbRepository<Post> postsData, IUrlGenerator urlGenerator)
         {
             this.postsData = postsData;
             this.urlGenerator = urlGenerator;
@@ -23,11 +23,11 @@ namespace BlogSystem.Web.Controllers
 
         public ActionResult Index(int page = 1, int perPage = GlobalConstants.DefaultPageSize)
         {
-            int pagesCount = (int)Math.Ceiling(this.postsData.All().Where(x => x.type == "BST").Count() / (decimal)perPage);
+            int pagesCount = (int)Math.Ceiling(this.postsData.All().Where(x => x.ParentType == "TK" && x.status != -1 && x.isPublish == true).Count() / (decimal)perPage);
 
             var postsPage = this.postsData
                 .All()
-                .Where(x => x.type == "BST" && x.isPublish == true)
+                .Where(x => x.ParentType == "TK" && x.status != -1 && x.isPublish == true)
                 .OrderByDescending(p => p.CreatedOn)
                 .Skip(perPage * (page - 1))
                 .Take(perPage);
